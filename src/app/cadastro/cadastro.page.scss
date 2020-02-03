@@ -1,0 +1,44 @@
+.background{
+    --background: url(../../assets/corcovado.jpg);
+}
+.nomeSobrenome{
+    display: flex;
+    align-items: center;
+    margin-top: 30%;
+}
+.nome{
+    padding-left: 10px;
+    padding-right: 5px;
+    block-size: 60px;
+
+}
+.sobrenome{
+    padding-right: 10px;
+    padding-left: 5px;
+    block-size: 60px;
+
+}
+.email{
+    padding-right: 10px;
+    padding-left: 10px;
+    margin-top: 10px;
+    block-size: 60px;
+
+}
+.senha{
+    padding-right: 10px;
+    padding-left: 10px;
+    margin-top: 10px;
+    block-size: 60px;
+}
+.confirma_senha{
+    padding-right: 10px;
+    padding-left: 10px;
+    margin-top: 10px;
+    block-size: 60px;
+}
+.cadastrar{
+    display: flex;
+    justify-content: center;
+    margin-top: 15%;
+}

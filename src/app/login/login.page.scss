@@ -1,18 +1,34 @@
-ion-content{
-    display: flex;
+.background{
+    --background: url(../../assets/corcovado.jpg);
 }
 
 .email{
+    display: flex;
     margin-top: 140px;
-    margin-left: 50px;
-    margin-right: 50px;
+    margin-left: 15px;
+    margin-right: 15px;
+    block-size: 60px;
+    align-items: center;
 }
 
 .senha{
-    margin-top: 15px;
-    margin-left: 50px;
-    margin-right: 50px;
-}    
+    display: flex;
+    margin-top: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
+    block-size: 60px;
+    align-items: center;
+}   
+.entrar{
+    margin-left: 68%;
+    margin-top: 5%;
+}
+.cadastrar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 45%;
+}
 
 
 

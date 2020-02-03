@@ -4,17 +4,21 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="background">
   <ion-item class="email">
-    <ion-label position="floating">Email</ion-label>
+    <ion-label position="floating">E-mail</ion-label>
     <ion-input type="email"></ion-input>
   </ion-item>
   <ion-item class="senha">
     <ion-label position="floating">Senha</ion-label>
-    <ion-input type="password" attribute="autocomplete"></ion-input>
+    <ion-input type="password"></ion-input>
   </ion-item>
-  <ion-button class="entrar">Entrar</ion-button>
-  <ion-button class="cadastrar">Cadastrar-se</ion-button>
+  <div  class="entrar">
+    <ion-button>Entrar</ion-button>
+  </div>
+  <div class="cadastrar">  
+    <ion-button href="http://localhost:8100/cadastro">Cadastrar-se</ion-button>
+  </div>
 </ion-content>
 
 <!-- href="./app/cadastro.page.html" -->
