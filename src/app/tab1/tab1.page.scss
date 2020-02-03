@@ -1,7 +1,6 @@
 header{
   display: flex;
-  padding: 30px 15px;
-  padding-bottom: 17px;
+  padding: 17px 15px;
 }
 
 header h1{
@@ -88,14 +87,14 @@ header .right{
 
 .sectionTitle h1{
   color: rgba(21, 51, 59, 0.87);
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 400;
   margin: 0;
 }
 
 .sectionTitle h2{
   color: rgba(21, 51, 59, 0.70);
-  font-size: 20px;
+  font-size: 18px;
   font-weight: lighter;
   margin: 0;
 }
@@ -106,6 +105,10 @@ header .right{
   overflow-x: scroll;
   padding: 20px;
   align-items: center;
+}
+
+.featuredGuides{
+  padding: 0 15px;
 }
 
 ::-webkit-scrollbar,

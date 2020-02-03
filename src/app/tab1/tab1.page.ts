@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { faTree, faPizzaSlice, faUmbrellaBeach, faTheaterMasks, faCloudSun, faBolt, faCloudRain, faSmog, faSun, faMoon, faCloud, faCloudMoon, faTemperatureHigh } from '@fortawesome/free-solid-svg-icons';
-import { timingSafeEqual } from 'crypto';
+import { faTree, faPizzaSlice, faUmbrellaBeach, faTheaterMasks, faCloudSun, faCloudRain, faSmog, faSun, faMoon, faCloud, faCloudMoon, faTemperatureHigh, faCloudShowersHeavy } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-tab1',
@@ -56,7 +55,7 @@ export class Tab1Page {
 
       switch(weather.condition_slug){
         case 'storm':
-          this.weather.icon = faBolt;
+          this.weather.icon = faCloudShowersHeavy;
           break;
         case 'rain':
           this.weather.icon = faCloudRain;
