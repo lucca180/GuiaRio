@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { faTree, faPizzaSlice, faUmbrellaBeach, faTheaterMasks, faCloudSun } from '@fortawesome/free-solid-svg-icons';
+import { faTree, faPizzaSlice, faUmbrellaBeach, faTheaterMasks, faCloudSun, faBolt, faCloudRain, faSmog, faSun, faMoon, faCloud, faCloudMoon, faTemperatureHigh } from '@fortawesome/free-solid-svg-icons';
+import { timingSafeEqual } from 'crypto';
 
 @Component({
   selector: 'app-tab1',
@@ -7,11 +8,17 @@ import { faTree, faPizzaSlice, faUmbrellaBeach, faTheaterMasks, faCloudSun } fro
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
+
   faTree = faTree;
   faPizzaSlice = faPizzaSlice;
   faUmbrellaBeach = faUmbrellaBeach;
   faTheaterMasks = faTheaterMasks;
-  faCloudSun = faCloudSun;  
+
+  weather = {
+    description: "Provavelmente Quente",
+    temp: 39,
+    icon: faCloudSun,
+  }
 
   places = [
     {
@@ -33,6 +40,52 @@ export class Tab1Page {
 
   ]
 
-  constructor() {}
+  constructor() {
+    this.getPrevisao();
+  }
+
+
+  async getPrevisao (){
+    try{
+      const URL = "https://api.hgbrasil.com/weather?format=json-cors&key=0c236389&woeid=90200707";
+      let res = await fetch(URL);
+      let data = await res.json();
+      let weather = data.results;
+      this.weather.description = weather.description;
+      this.weather.temp = weather.temp;
+
+      switch(weather.condition_slug){
+        case 'storm':
+          this.weather.icon = faBolt;
+          break;
+        case 'rain':
+          this.weather.icon = faCloudRain;
+          break;
+        case 'fog':
+          this.weather.icon = faSmog;
+          break;
+        case 'clear_day':
+          this.weather.icon = faSun;
+          break;
+        case 'clear_night':
+          this.weather.icon = faMoon;
+          break;
+        case 'cloud':
+          this.weather.icon = faCloud;
+          break;
+        case 'cloudly_day':
+          this.weather.icon = faCloudSun;
+          break;
+        case 'cloudly_night':
+          this.weather.icon = faCloudMoon;
+          break;
+        default:
+          this.weather.icon = faTemperatureHigh;
+          break;
+      }
+    }catch(e){
+      console.error(e);
+    }
+  }
 
 }

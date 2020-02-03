@@ -1,10 +1,10 @@
 <header>
   <div class="left">
     <h1>Bem-Vindo ao Rio</h1>
-    <h2>Parcialmente Nublado, 39°C</h2>
+    <h2>{{weather.description}}, {{weather.temp}}°C</h2>
   </div>
   <div class="right">
-    <fa-icon [icon]="faCloudSun"></fa-icon>
+    <fa-icon [icon]="weather.icon"></fa-icon>
   </div>
 </header>
 
