@@ -12,6 +12,14 @@ const routes: Routes = [
   {
     path: 'cadastro',
     loadChildren: () => import('./cadastro/cadastro.module').then( m => m.CadastroPageModule)
+  },
+  {
+    path: 'pre-cadastro',
+    loadChildren: () => import('./pre-cadastro/pre-cadastro.module').then( m => m.PreCadastroPageModule)
+  },
+  {
+    path: 'cadastro-guia',
+    loadChildren: () => import('./cadastro-guia/cadastro-guia.module').then( m => m.CadastroGuiaPageModule)
   }
 
 ];
