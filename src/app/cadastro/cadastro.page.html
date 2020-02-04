@@ -2,29 +2,34 @@
 </ion-header>
 
 <ion-content class="background">
-  <div class="nomeSobrenome">
-    <ion-item class="nome">
-      <ion-label position="floating">Nome</ion-label>
-      <ion-input type="text"></ion-input>
+
+  <h1>Faça seu cadastro</h1>
+  <form [formGroup]="registerForm" (ngSubmit)="submitForm(registerForm)">  
+    <div class="nomeSobrenome">    
+      <ion-item class="campos1" [class.invalid]="registerForm.controls.name.touched">
+        <ion-label position="floating">Nome</ion-label>
+        <ion-input type="text" formControlName="name"></ion-input>
+      </ion-item>
+      <ion-item class="campos1" [class.invalid]="registerForm.controls.name.touched">
+        <ion-label position="floating">Sobrenome</ion-label>
+        <ion-input type="text" formControlName="lastName"></ion-input>
+      </ion-item>
+    </div>
+    <ion-item class="campos2" [class.invalid]="registerForm.controls.name.touched">
+      <ion-label position="floating">E-mail</ion-label>
+      <ion-input type="email" formControlName="email"></ion-input>
     </ion-item>
-    <ion-item class="sobrenome">
-      <ion-label position="floating">Sobrenome</ion-label>
-      <ion-input type="text"></ion-input>
+    <ion-item class="campos2" [class.invalid]="registerForm.controls.name.touched">
+      <ion-label position="floating">Senha</ion-label>
+      <ion-input type="password" formControlName="password"></ion-input>
     </ion-item>
-  </div>
-  <ion-item class="email">
-    <ion-label position="floating">E-mail</ion-label>
-    <ion-input type="email"></ion-input>
-  </ion-item>
-  <ion-item class="senha">
-    <ion-label position="floating">Senha</ion-label>
-    <ion-input type="password"></ion-input>
-  </ion-item>
-    <ion-item class="confirma_senha">      <ion-label position="floating">Confirme Sua Senha</ion-label>
-    <ion-input type="password"></ion-input>
-  </ion-item>
-  <div class="cadastrar" color="primary">  
-    <ion-button href="http://localhost:8100/login">cadastrar</ion-button>
-  </div>
+    <ion-item class="campos2">      
+      <ion-label position="floating">Confirme Sua Senha</ion-label>
+      <ion-input type="password"></ion-input>
+    </ion-item>
+    <ion-button class="cadastrar" type="submit" expand="full" color="primary">Cadastrar</ion-button>
+  </form> 
+    
 </ion-content>
 
+<!-- href="http://localhost:8100/login" -->

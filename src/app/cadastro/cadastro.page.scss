@@ -1,44 +1,31 @@
-.background{
-    --background: url(../../assets/corcovado.jpg);
+.background {
+    // --background: url(../../assets/corcovado.jpg);
+    --background: #eeeeee;
 }
-.nomeSobrenome{
+.nomeSobrenome {
     display: flex;
     align-items: center;
     margin-top: 30%;
+    flex: 1;
 }
-.nome{
-    padding-left: 10px;
-    padding-right: 5px;
-    block-size: 60px;
-
+.campos1 {
+    padding: 0px 10px;
+    border-radius: 50px;
 }
-.sobrenome{
-    padding-right: 10px;
-    padding-left: 5px;
-    block-size: 60px;
-
-}
-.email{
+.campos2 {
     padding-right: 10px;
     padding-left: 10px;
     margin-top: 10px;
-    block-size: 60px;
-
+    border-radius: 50px;
 }
-.senha{
-    padding-right: 10px;
-    padding-left: 10px;
-    margin-top: 10px;
-    block-size: 60px;
+.cadastrar {
+    margin-top: 100%
 }
-.confirma_senha{
-    padding-right: 10px;
-    padding-left: 10px;
-    margin-top: 10px;
-    block-size: 60px;
-}
-.cadastrar{
-    display: flex;
-    justify-content: center;
-    margin-top: 15%;
+.invalido {
+    --ion-label {
+        --color: red;
+    }
+    ion-input {
+        border-bottom: 1px red;
+    }
 }
