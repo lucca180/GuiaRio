@@ -2,6 +2,10 @@
     // --background: url(../../assets/corcovado.jpg);
     --background: #eeeeee;
 }
+.titulo{
+    margin-left: 20px;
+    margin-top: 20px;
+}
 .nomeSobrenome {
     display: flex;
     align-items: center;
@@ -19,7 +23,7 @@
     border-radius: 50px;
 }
 .cadastrar {
-    margin-top: 100%
+    margin-top: 85%;
 }
 .invalido {
     --ion-label {

@@ -3,7 +3,7 @@
 
 <ion-content class="background">
 
-  <h1>Faça seu cadastro</h1>
+  <h1 class="titulo">Faça seu cadastro</h1>
   <form [formGroup]="registerForm" (ngSubmit)="submitForm(registerForm)">  
     <div class="nomeSobrenome">    
       <ion-item class="campos1" [class.invalid]="registerForm.controls.name.touched">
@@ -23,12 +23,14 @@
       <ion-label position="floating">Senha</ion-label>
       <ion-input type="password" formControlName="password"></ion-input>
     </ion-item>
-    <ion-item class="campos2">      
-      <ion-label position="floating">Confirme Sua Senha</ion-label>
-      <ion-input type="password"></ion-input>
+    <ion-item class="campos2" [class.invalid]="registerForm.controls.name.touched">      
+      <ion-label position="floating" >Confirme Sua Senha</ion-label>
+      <ion-input type="password" formControlName="passwordConfirm"></ion-input>
+      <ion-item font-color="danger" *ngIf="!senhaIgual">A senha está errada!</ion-item>
     </ion-item>
     <ion-button class="cadastrar" type="submit" expand="full" color="primary">Cadastrar</ion-button>
   </form> 
+
     
 </ion-content>
 

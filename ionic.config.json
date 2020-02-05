@@ -1,5 +1,7 @@
 {
   "name": "Projeto_Final_EJCM",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

@@ -14,8 +14,15 @@
     <ion-button color="primary">Entrar</ion-button>
   </div>
   <div class="cadastrar">  
-    <ion-button color="primary" href="http://localhost:8100/cadastro">Cadastrar-se</ion-button>
+    <ion-button color="primary" (click)="goToRegister()">Cadastrar-se</ion-button>
   </div>
+  <button (click)="openCamera()">
+    Camera
+  </button>
+  <button (click)="openGallery()">
+    galeria
+  </button>
+  <img src="{{myPhoto}}">
 </ion-content>
 
 <!-- href="./app/cadastro.page.html" -->
