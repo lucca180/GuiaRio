@@ -5,7 +5,11 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+  },  {
+    path: 'pre-login',
+    loadChildren: () => import('./pre-login/pre-login.module').then( m => m.PreLoginPageModule)
   }
+
 ];
 @NgModule({
   imports: [

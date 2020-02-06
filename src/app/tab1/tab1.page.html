@@ -1,14 +1,13 @@
 <header>
-  <div class="left">
-    <h1>Bem-Vindo ao Rio</h1>
-    <h2>{{weather.description}}, {{weather.temp}}°C</h2>
+  <div class="title">
+    <div class="left">
+      <h1>Bem-Vindo ao Rio</h1>
+      <h2>{{weather.description}}, {{weather.temp}}°C</h2>
+    </div>
+    <div class="right">
+      <fa-icon [icon]="weather.icon"></fa-icon>
+    </div>
   </div>
-  <div class="right">
-    <fa-icon [icon]="weather.icon"></fa-icon>
-  </div>
-</header>
-
-<ion-content>
   <div class="catIcons">
     <div class="icon">
       <ion-button class="parks" shape="round">
@@ -36,6 +35,9 @@
     </div>
   </div>
 
+</header>
+
+<ion-content>
   <div class="sectionTitle">
     <h1>Lugares Recomendados</h1>
     <h2>Ver Todos</h2>
