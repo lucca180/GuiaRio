@@ -28,7 +28,7 @@
       <ion-input type="password" formControlName="passwordConfirm"></ion-input>
       <ion-item font-color="danger" *ngIf="!senhaIgual">A senha está errada!</ion-item>
     </ion-item>
-    <ion-button class="cadastrar" type="submit" expand="full" color="primary">Cadastrar</ion-button>
+    <ion-button class="cadastrar" type="submit" expand="full" color="primary" [disabled]="registerForm.invalid">Cadastrar</ion-button>
   </form> 
 
     
