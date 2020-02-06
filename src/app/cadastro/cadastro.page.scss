@@ -1,6 +1,5 @@
 .background {
-    // --background: url(../../assets/corcovado.jpg);
-    --background: #eeeeee;
+    --background: #eeeeee
 }
 .titulo{
     margin-left: 20px;
@@ -27,9 +26,9 @@
 }
 .invalido {
     --ion-label {
-        --color: red;
+        --color: #ff0000;
     }
     ion-input {
-        border-bottom: 1px red;
+        border-bottom: 1px #ff0000;
     }
 }

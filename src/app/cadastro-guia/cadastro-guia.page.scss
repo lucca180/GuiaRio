@@ -1,54 +1,75 @@
-// .background{
-//     --background: url(../../assets/corcovado.jpg);
-// }
-.nomeSobrenome{
+.background {
+    --background: #eeeeee
+}
+.titulo{
+    margin-left: 20px;
+    margin-top: 20px;
+}
+.nomeSobrenome {
     display: flex;
     align-items: center;
-    margin-top: 30%;
+    margin-top: 25%;
+    flex: 1;
 }
-.nome{
+.campos1 {
+    padding: 0px 10px;
+    border-radius: 50px;
+}
+.campos2 {
+    padding-right: 10px;
     padding-left: 10px;
-    padding-right: 5px;
-    block-size: 60px;
+    margin-top: 10px;
+    border-radius: 50px;
+}
+.cadastrar {
+    margin-top: 42%;
+}
 
-}
-.sobrenome{
-    padding-right: 10px;
-    padding-left: 5px;
-    block-size: 60px;
+// .nomeSobrenome{
+//     display: flex;
+//     align-items: center;
+//     margin-top: 30%;
+// }
+// .nome{
+//     padding-left: 10px;
+//     padding-right: 5px;
+//     block-size: 60px;
 
-}
-.email{
-    padding-right: 10px;
-    padding-left: 10px;
-    margin-top: 10px;
-    block-size: 60px;
+// }
+// .sobrenome{
+//     padding-right: 10px;
+//     padding-left: 5px;
+//     block-size: 60px;
 
-}
-.senha{
-    padding-right: 10px;
-    padding-left: 10px;
-    margin-top: 10px;
-    block-size: 60px;
-}
-.confirma_senha{
-    padding-right: 10px;
-    padding-left: 10px;
-    margin-top: 10px;
-    block-size: 60px;
-}
-.cpf{
-    padding-right: 10px;
-    padding-left: 10px;
-    margin-top: 10px;
-    block-size: 60px;
-}
-.telefone{
-    padding-right: 10px;
-    padding-left: 10px;
-    margin-top: 10px;
-    block-size: 60px;
-}
-.cadastrar{
-    margin-top: 60.5%;
-}
+// }
+// .email{
+//     padding-right: 10px;
+//     padding-left: 10px;
+//     margin-top: 10px;
+//     block-size: 60px;
+
+// }
+// .senha{
+//     padding-right: 10px;
+//     padding-left: 10px;
+//     margin-top: 10px;
+//     block-size: 60px;
+// }
+// .confirma_senha{
+//     padding-right: 10px;
+//     padding-left: 10px;
+//     margin-top: 10px;
+//     block-size: 60px;
+// }
+// .cpf{
+//     padding-right: 10px;
+//     padding-left: 10px;
+//     margin-top: 10px;
+//     block-size: 60px;
+// }
+// .telefone{
+//     padding-right: 10px;
+//     padding-left: 10px;
+//     margin-top: 10px;
+//     block-size: 60px;
+// }

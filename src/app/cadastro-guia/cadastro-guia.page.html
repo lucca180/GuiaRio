@@ -2,37 +2,45 @@
 </ion-header>
 
 <ion-content class="background">
+
+  <h1 class="titulo">Faça seu cadastro</h1>
+  <form [formGroup]="registerForm" (ngSubmit)="submitForm(registerForm)"></form>
   <div class="nomeSobrenome">
-    <ion-item class="nome">
+    <ion-item class="campos1" [class.invalid]="registerForm.controls.name.invalid && registerForm.controls.name.touched">
       <ion-label position="floating">Nome</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" formControlName="name"></ion-input>
     </ion-item>
-    <ion-item class="sobrenome">
+    <ion-item class="campos1" [class.invalid]="registerForm.controls.lastName.invalid && registerForm.controls.lastName.touched">
       <ion-label position="floating">Sobrenome</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" formControlName="lastName"></ion-input>
     </ion-item>
   </div>
-  <ion-item class="email">
+  <ion-item class="campos2" [class.invalid]="registerForm.controls.email.invalid && registerForm.controls.email.touched">
     <ion-label position="floating">E-mail</ion-label>
-    <ion-input type="email"></ion-input>
+    <ion-input type="email" formControlName="email"></ion-input>
   </ion-item>
-  <ion-item class="senha">
+  <ion-item class="campos2" [class.invalid]="registerForm.controls.password.invalid && registerForm.controls.password.touched">
     <ion-label position="floating">Senha</ion-label>
-    <ion-input type="password"></ion-input>
+    <ion-input type="password" formControlName="password"></ion-input>
   </ion-item>
-  <ion-item class="confirma_senha">      
+  <ion-item class="campos2" [class.invalid]="registerForm.controls.passwordConfirm.invalid && registerForm.controls.passwordConfirm.touched">      
     <ion-label position="floating">Confirme Sua Senha</ion-label>
-    <ion-input type="password"></ion-input>
+    <ion-input type="password" formControlName="passwordConfirm"></ion-input>
   </ion-item>
-  <ion-item class="cpf">
+  <ion-item class="campos2" [class.invalid]="registerForm.controls.CPF.invalid && registerForm.controls.CPF.touched">
     <ion-label position="floating">CPF</ion-label>
-    <ion-input type="number"></ion-input>
+    <ion-input type="string" formControlName="CPF"></ion-input>
   </ion-item>
-  <ion-item class="telefone">
+  <ion-item class="campos2" [class.invalid]="registerForm.controls.telefone.invalid && registerForm.controls.telefone.touched">
     <ion-label position="floating">Telefone</ion-label>
-    <ion-input type="tel"></ion-input>
+    <ion-input type="tel" formControlName="telefone"></ion-input>
   </ion-item>
+  <ion-item class="campos2" [class.invalid]="registerForm.controls.cadastur.invalid && registerForm.controls.cadastur.touched">
+    <ion-label position="floating">Cadastur</ion-label>
+    <ion-input type="string" formControlName="Cadastur"></ion-input>
+  </ion-item>
+  
   <div class="cadastrar" color="primary">  
-    <ion-button expand="full" href="http://localhost:8100/login">cadastrar</ion-button>
+    <ion-button type="submit" expand="full" [disabled]="registerForm.invalid">cadastrar</ion-button>
   </div>
 </ion-content>
