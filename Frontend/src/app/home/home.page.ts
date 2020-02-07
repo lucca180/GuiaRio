@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { faTree, faPizzaSlice, faUmbrellaBeach, faTheaterMasks, faCloudSun, faCloudRain, faSmog, faSun, faMoon, faCloud, faCloudMoon, faTemperatureHigh, faCloudShowersHeavy } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'app-tab1',
-  templateUrl: 'tab1.page.html',
-  styleUrls: ['tab1.page.scss']
+  selector: 'app-home',
+  templateUrl: 'home.page.html',
+  styleUrls: ['home.page.scss']
 })
-export class Tab1Page {
+export class HomePage {
 
   faTree = faTree;
   faPizzaSlice = faPizzaSlice;

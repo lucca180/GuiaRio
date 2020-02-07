@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Tab1Page } from './tab1.page';
+import { HomePage } from './home.page';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
@@ -16,8 +16,8 @@ import { GuideCardComponent } from '../components/guide-card/guide-card.componen
     IonicModule,
     CommonModule,
     FormsModule,
-    RouterModule.forChild([{ path: '', component: Tab1Page }])
+    RouterModule.forChild([{ path: '', component: HomePage }])
   ],
-  declarations: [Tab1Page, PlaceFeaturedComponent, GuideCardComponent]
+  declarations: [HomePage, PlaceFeaturedComponent, GuideCardComponent]
 })
-export class Tab1PageModule {}
+export class HomePageModule {}
