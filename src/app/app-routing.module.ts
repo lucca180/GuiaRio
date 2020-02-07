@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { HomeGuardGuard } from './guards/homeGuard/home-guard.guard';
 
 const routes: Routes = [
   {
@@ -12,12 +11,8 @@ const routes: Routes = [
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
   {
-    path: 'cadastro', canActivate: [HomeGuardGuard], 
+    path: 'cadastro', 
     loadChildren: () => import('./cadastro/cadastro.module').then( m => m.CadastroPageModule)
-  },
-  {
-    path: 'pre-cadastro',
-    loadChildren: () => import('./pre-cadastro/pre-cadastro.module').then( m => m.PreCadastroPageModule)
   },
   {
     path: 'cadastro-guia',

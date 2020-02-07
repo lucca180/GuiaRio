@@ -1,8 +1,8 @@
 .background{
+    //terá outra imagem de background.
     --background: url("../../assets/background_login.jpg") no-repeat top right / cover;
 
 }
-
 .email{
     display: flex;
     margin-top: 140px;
@@ -11,7 +11,6 @@
     block-size: 60px;
     align-items: center;
 }
-
 .senha{
     display: flex;
     margin-top: 10px;

@@ -1,9 +1,7 @@
-.background {
-    --background: #eeeeee;
-}
 .titulo{
     margin-left: 20px;
     margin-top: 20px;
+    color: #f6f6f6;
 }
 .nomeSobrenome {
     display: flex;
@@ -23,4 +21,12 @@
 }
 .cadastrar {
     margin-top: 42%;
+}
+.invalido {
+    --ion-label {
+        --color: #ff0000;
+    }
+    ion-input {
+        border-bottom: 1px #ff0000;
+    }
 }

@@ -2,28 +2,28 @@
 </ion-header>
 
 <ion-content class="background">
-  <ion-item class="email">
-    <ion-label position="floating">E-mail</ion-label>
-    <ion-input type="email"></ion-input>
-  </ion-item>
-  <ion-item class="senha">
-    <ion-label position="floating">Senha</ion-label>
-    <ion-input type="password"></ion-input>
-  </ion-item>
-  <div class="entrar">
-    <ion-button color="primary">Entrar</ion-button>
-  </div>
-  <div class="cadastrar">  
-    <ion-button color="primary" (click)="goToRegister()">Cadastrar-se</ion-button>
-  </div>
-  <button (click)="openCamera()">
-    Camera
-  </button>
-  <button (click)="openGallery()">
-    galeria
-  </button>
-  <img src="{{myPhoto}}">
+    <!-- iems responsáveis pelos 2 campos do formulário: email e senha -->
+    <ion-item class="email">
+        <ion-label position="floating">E-mail</ion-label>
+        <ion-input type="email"></ion-input>
+    </ion-item>
+    <ion-item class="senha">
+        <ion-label position="floating">Senha</ion-label>
+        <ion-input type="password"></ion-input>
+    </ion-item>
+    <!-- div responsável pelo botão de entrar -->
+    <div class="entrar">
+        <ion-button color="secondary">Entrar</ion-button>
+    </div>
 </ion-content>
 
-<!-- href="./app/cadastro.page.html" -->
+
+
+<!-- <button (click)="openCamera()">
+  Camera
+</button>
+<button (click)="openGallery()">
+  galeria
+</button>
+<img src="{{myPhoto}}"> -->
 
