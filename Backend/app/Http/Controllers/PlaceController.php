@@ -13,6 +13,11 @@ class PlaceController extends Controller
         return response()->json([$place]);
     }
 
+    public function listPlace() {
+        $place = Place::all();
+        return response()->json([$place]);
+    }
+
     public function showPlace($id) {
         $place = Place::findOrFail($id);
         return response()->json([$place]);
