@@ -21,7 +21,7 @@ class CreatePlacesTable extends Migration
             $table->string('category');
             $table->float('rating');
             $table->string('site');
-            $table->string('photo');
+            $table->string('photo')->nullable();
             $table->timestamps();
         });
     }

@@ -21,8 +21,8 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->longText('description');
-            $table->string('photo');
+            $table->longText('description')->nullable();
+            $table->string('photo')->nullable();
 
             /* Atributos de tipo de usuário */
             $table->boolean('is_guide')->default(0);
