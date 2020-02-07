@@ -1,0 +1,145 @@
+ion-header{
+    max-height: 200px;
+    padding: 20px 25px;
+}
+
+.themeWrapper{
+    width: 100%;
+    height: 100%;
+}
+
+.backButton {
+    width: 35px;
+    height: 35px;
+    border-radius: 10px;
+    --background: #fff;
+    --color: #000;
+}
+
+.mainTitle{
+    display: flex;
+    align-items: center;
+}
+
+.mainTitle h1{
+    font-size: 36px;
+    margin: 0;
+    margin-left: 15px;
+}
+
+.otherInfos{
+    display: flex;
+    margin: 0 7px;
+    margin-top: 10px;
+}
+
+.otherInfos p {
+    color: rgba($color: #fff, $alpha: .7);
+    font-size: 16px;
+    margin: 11px 0;
+}
+
+.otherInfos p fa-icon{
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    font-size: 22px;
+    margin-right: 10px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.otherInfos .reviewInfo{
+    color: rgba($color: #000000, $alpha: .5);
+}
+
+.otherInfos .right{
+    flex: 1;
+    font-size: 45px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+
+.placeImage{
+    width: 100%;
+    min-height: 200px;
+    object-fit: cover;
+}
+
+ion-content{
+    position: relative;
+    --background: #fefefe;
+    color: #000;
+    overflow-y: scroll;
+    height: calc(100% - 200px);
+}
+
+ion-content h1{
+    color: rgba($color: #000000, $alpha: .65);
+    font-weight: 400;
+    font-size: 22px;
+    padding: 0 20px;
+}
+
+ion-content .reviews{
+    padding: 0 20px;
+    margin-top: 20px;
+}
+
+// .natureTheme{
+    
+// }
+
+.natureTheme ion-header{
+    background: #2C9A62;
+    color: #fff;
+}
+
+.natureTheme .backButton{
+    color: #2C9A62;
+}
+
+.natureTheme ion-fab-button{
+    --background: #2C9A62;
+}
+
+.foodTheme ion-header{
+    background: #D81B60;
+    color: #fff;
+}
+
+.foodTheme .backButton{
+    color: #D81B60;
+}
+
+.foodTheme ion-fab-button{
+    --background: #D81B60;
+}
+
+.beachTheme ion-header{
+    background: #FFA000;
+    color: #fff;
+}
+
+.beachTheme .backButton{
+    color: #FFA000;
+}
+
+.beachTheme ion-fab-button{
+    --background: #FFA000;
+}
+
+.cultureTheme ion-header{
+    background: #AB47BC;
+    color: #fff;
+}
+
+.cultureTheme .backButton{
+    color: #AB47BC;
+}
+
+.cultureTheme ion-fab-button{
+    --background: #AB47BC;
+}
