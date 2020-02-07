@@ -28,8 +28,6 @@
       <ion-item class="campos2" [class.invalid]="registerForm.controls.passwordConfirm.touched">      
           <ion-label position="floating">Confirme Sua Senha</ion-label>
           <ion-input type="password" formControlName="passwordConfirm"></ion-input>
-          <!-- Função responsável por garantir que deva ser escrita a mesma senha no campo de senha e de confirmação (ngIf) -->
-          <ion-item *ngIf="!senhaIgual">A senha está errada!</ion-item>
       </ion-item>
       <ion-item class="campos2" [class.invalid]="registerForm.controls.CPF.touched">
           <ion-label position="floating">CPF</ion-label>
