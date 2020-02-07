@@ -12,7 +12,7 @@ const routes: Routes = [
   },
   {
     path: 'place',
-    loadChildren: () => import('./place-page/place-page.module').then( m => m.PlacePagePageModule)
+    loadChildren: () => import('./place/place-page.module').then( m => m.PlacePageModule)
   }
 
 ];

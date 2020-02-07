@@ -43,20 +43,20 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () =>
-              import('../place-page/place-page.module').then(m => m.PlacePagePageModule)
+              import('../place/place-page.module').then(m => m.PlacePageModule)
           }
         ]
       },
       {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: '/tabs/home',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: '/tabs/home',
     pathMatch: 'full'
   }
 ];

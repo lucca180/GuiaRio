@@ -1,0 +1,61 @@
+<div class="themeWrapper cultureTheme">
+  <ion-header>
+    <div class="mainTitle">
+      <ion-button (click)="goBack()" class="backButton"><fa-icon [icon]="faChevronLeft"></fa-icon></ion-button>
+      <h1>Corcovado</h1>
+    </div>
+    <div class="otherInfos">
+      <div class="left">
+        <p class="reviewInfo"><fa-icon [icon]="faThumbsUp"></fa-icon>75% das pessoas recomendam</p>
+        <p><fa-icon [icon]="faMapMarkerAlt"></fa-icon>Alto da Boa Vista</p>
+        <p><fa-icon [icon]="faInfoCircle"></fa-icon>www.cristoredentoroficial.com.br</p>
+      </div>
+      <div class="right">
+        <fa-icon (click)="toggleFavorite()" [icon]="faHeart"></fa-icon>
+      </div>
+    </div>
+  </ion-header>
+  <ion-content>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button [disabled]="reviewFormActive && reviewForm.invalid" (click)="fabClick(reviewForm)" >
+        <fa-icon *ngIf="!reviewFormActive" [icon]="faCommentAlt"></fa-icon>
+        <fa-icon *ngIf="reviewFormActive" [icon]="faCheck"></fa-icon>
+      </ion-fab-button>
+    </ion-fab>
+    
+    <img class="placeImage" 
+    src="https://s3.amazonaws.com/conhecer-wp/wp-content/uploads/2019/05/13180352/saida-pedagogica-rio-de-janeiro-corcovado-cristo-redentor-01.png"/>
+    <div class="mainContent">
+      <div *ngIf="!reviewFormActive" class="reviews">
+        <h1>Avaliações (3)</h1>
+        <app-review-card></app-review-card>
+        <app-review-card></app-review-card>
+        <app-review-card></app-review-card>
+      </div>
+
+      <div *ngIf="reviewFormActive" class="reviewForm">
+        <h1>Escreva sua Avaliação</h1>
+        <form [formGroup]="reviewForm">
+          <ion-list>
+            <ion-item>
+              <ion-label position="stacked">Comentário</ion-label>
+              <ion-textarea formControlName="comment"></ion-textarea>
+            </ion-item>
+            
+            <ion-radio-group>
+              <ion-item>
+                <ion-label>Recomendo esse lugar</ion-label>
+                <ion-radio slot="start" value="true" formControlName="recomended"></ion-radio>
+              </ion-item>
+          
+              <ion-item>
+                <ion-label>Não Recomendo esse lugar</ion-label>
+                <ion-radio slot="start" value="false" formControlName="recomended"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
+        </form>
+      </div>
+    </div>
+  </ion-content>
+</div>

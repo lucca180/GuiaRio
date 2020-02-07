@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-import { PlacePagePageRoutingModule } from './place-page-routing.module';
+import { PlacePageRoutingModule } from './place-routing.module';
 
-import { PlacePagePage } from './place-page.page';
+import { PlacePage } from './place.page';
 import { ReviewCardComponent } from '../components/review-card/review-card.component';
 
 @NgModule({
@@ -16,8 +16,9 @@ import { ReviewCardComponent } from '../components/review-card/review-card.compo
     CommonModule,
     FormsModule,
     IonicModule,
-    PlacePagePageRoutingModule
+    PlacePageRoutingModule,
+    ReactiveFormsModule
   ],
-  declarations: [PlacePagePage, ReviewCardComponent]
+  declarations: [PlacePage, ReviewCardComponent]
 })
-export class PlacePagePageModule {}
+export class PlacePageModule {}
