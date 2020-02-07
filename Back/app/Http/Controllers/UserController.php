@@ -30,6 +30,6 @@ class UserController extends Controller
 
     public function deleteUser($id) {
         User::destroy($id);
-        return response()->json([$user]);
+        return response()->json(['Usuário deletado!']);
     }
 }

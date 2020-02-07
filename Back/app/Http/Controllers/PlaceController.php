@@ -24,12 +24,12 @@ class PlaceController extends Controller
             $place->updatePlace($request, $id);
             return response()->json([$place]);
         } else {
-            return response()->json(['Este usuário não existe!']);
+            return response()->json(['Este lugar não existe!']);
         }
     }
 
     public function deletePlace($id) {
         Place::destroy($id);
-        return response()->json([$place]);
+        return response()->json(['Lugar deletado!']);
     }
 }

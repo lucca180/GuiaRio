@@ -22,10 +22,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('showUser/{id}', 'UserController@showUser');
 Route::post('createUser', 'UserController@createUser');
 Route::put('updateUser/{id}', 'UserController@updateUser');
-Route::delete('deleteUser', 'UserController@deleteUser');
+Route::delete('deleteUser/{id}', 'UserController@deleteUser');
 
 /*Rotas dos lugares*/
 Route::get('showPlace/{id}', 'PlaceController@showPlace');
 Route::post('createPlace', 'PlaceController@createPlace');
 Route::put('updatePlace/{id}', 'PlaceController@updatePlace');
-Route::delete('deletePlace', 'PlaceController@deletePlace');
+Route::delete('deletePlace/{id}', 'PlaceController@deletePlace');

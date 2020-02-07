@@ -17,22 +17,21 @@ class Place extends Model
         $this->photo = $request->photo;
 
         $this->save();
-
     }
 
     public function updatePlace($request, $id) {
 
         if($request->name) {
-                $this->name = $request->name;
+            $this->name = $request->name;
         }
         if($request->description) {
-                $this->description = $request->description;
+            $this->description = $request->description;
         }
         if($request->address) {
-                $this->address = $request->address;
+            $this->address = $request->address;
         }
         if($request->category) {
-                $this->category = $request->category;
+            $this->category = $request->category;
         }
         if($request->rating) {
             $this->rating = $request->rating;
@@ -45,7 +44,6 @@ class Place extends Model
         }
 
         $this->save();
-
     }
     
 }

@@ -42,6 +42,7 @@ class User extends Authenticatable
         /* Criação dos atributos de usuário */
         $this->first_name = $request->first_name;
         $this->last_name = $request->last_name;
+        $this->email = $request->email;
         $this->password = $request->password;
         $this->description = $request->description;
         $this->photo = $request->photo;
@@ -61,16 +62,19 @@ class User extends Authenticatable
 
         /* Update atributos de usuário */
         if($request->first_name) {
-                $this->first_name = $request->first_name;
+            $this->first_name = $request->first_name;
         }
         if($request->last_name) {
-                $this->last_name = $request->last_name;
+            $this->last_name = $request->last_name;
+        }
+        if($request->email) {
+            $this->email = $request->email;
         }
         if($request->password) {
-                $this->password = $request->password;
+            $this->password = $request->password;
         }
         if($request->description) {
-                $this->description = $request->description;
+            $this->description = $request->description;
         }
         if($request->photo) {
             $this->photo = $request->photo;
@@ -78,7 +82,7 @@ class User extends Authenticatable
 
         /* Update atributos de guia */
         if($request->cpf) {
-            $this->cpf= $request->cpf;
+            $this->cpf = $request->cpf;
         }
         if($request->phone_number) {
             $this->phone_number = $request->phone_number;
@@ -87,7 +91,6 @@ class User extends Authenticatable
             $this->cadastur = $request->cadastur;
         }
 
-            
         $this->save();
     }
 

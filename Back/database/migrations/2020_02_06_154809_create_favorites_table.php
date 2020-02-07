@@ -20,9 +20,9 @@ class CreateFavoritesTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('guides', function (Blueprint $table) {
-            $table->foreign(user_id)->references('id')->on('users')->onDelete('cascade');
-            $table->foreign(place_id)->references('id')->on('places')->onDelete('cascade');
+        Schema::table('favorites', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('place_id')->references('id')->on('places')->onDelete('cascade');
         });
     }
 

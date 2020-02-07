@@ -17,14 +17,14 @@ class CreateRatingsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('place_id')->nullable();
-            $table->boolean(rating);
-            $table->longText(comment);
+            $table->boolean('rating');
+            $table->longText('comment');
             $table->timestamps();
         });
 
-        Schema::table('guides', function (Blueprint $table) {
-            $table->foreign(user_id)->references('id')->on('users')->onDelete('cascade');
-            $table->foreign(place_id)->references('id')->on('places')->onDelete('cascade');
+        Schema::table('ratings', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('place_id')->references('id')->on('places')->onDelete('cascade');
         });
     }
 
