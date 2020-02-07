@@ -35,6 +35,7 @@ export class CadastroGuiaPage implements OnInit {
     }
 
     //Função repsonsável pelo envio do formulário e no comentário uma função que envia e pega o nome(nesse caso) no storage.
+    //Também é responsável por levar o usuário para págin de login se o cadastro for válido
 
     submitForm(form) {
         this.senhaIgual = form.value.passwordConfirm == form.value.password
@@ -43,6 +44,7 @@ export class CadastroGuiaPage implements OnInit {
             console.log(array);
             console.log(form);
             console.log(form.value);
+            return this.router.navigate(['../login']);
                 // this.storage.set('name', this.registerForm.value.name).then(
                 //     (valor) => {
                 //         console.log(valor);
@@ -60,9 +62,5 @@ export class CadastroGuiaPage implements OnInit {
     // get() {
     //     this.storage.get('name');
     // }
-
-    navigateToLogin() {
-        this.router.navigate(['../login'])
-    }
 }
 

@@ -29,10 +29,10 @@
           <ion-label position="floating" >Confirme Sua Senha</ion-label>
           <ion-input type="password" formControlName="passwordConfirm"></ion-input>
           <!-- Função responsável por garantir que deva ser escrita a mesma senha no campo de senha e de confirmação (ngIf) -->
-          <ion-item font-color="danger" *ngIf="!senhaIgual">A senha está errada!</ion-item>
+<!--           <ion-item *ngIf="!senhaIgual">A senha está errada!</ion-item> -->
       </ion-item>  
-      <!-- Botão responsável por ir para pagina de login apos o cadastro e também responsável pelo envio do formulário -->
-      <ion-button (click)='navigateToLogin()' class="cadastrar" type="submit" expand="full" color="secondary" [disabled]="registerForm.invalid">Cadastrar</ion-button>
+      <!-- Botão responsável por ir para pagina de login apos o cadastro se for valido e também responsável pelo envio do formulário -->
+      <ion-button class="cadastrar" type="submit" expand="full" color="secondary" [disabled]="registerForm.invalid">Cadastrar</ion-button>
   </form> 
  
 </ion-content>

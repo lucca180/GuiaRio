@@ -44,8 +44,8 @@
           <ion-input type="string" formControlName="cadastur"></ion-input>
       </ion-item>
       <div class="cadastrar" color="primary"> 
-          <!-- Botão responsável por ir para pagina de login apos o cadastro e também responsável pelo envio do formulário -->
-          <ion-button (click)="navigateToLogin()" type="submit" expand="full" [disabled]="registerForm.invalid" color="secondary">cadastrar</ion-button>
+          <!-- Botão responsável por ir para pagina de login apos o cadastro se for valido e também responsável pelo envio do formulário -->
+          <ion-button type="submit" expand="full" [disabled]="registerForm.invalid" color="secondary">cadastrar</ion-button>
       </div>
   </form>
 
