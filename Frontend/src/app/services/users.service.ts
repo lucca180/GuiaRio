@@ -2,19 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-
 @Injectable({
   providedIn: 'root'
 })
-
-export class PlacesService {
-
+export class UsersService {
   apiURL: string = 'http://localhost:8000/api/';
   
   constructor(public http: HttpClient) { }
 
-  listPlaces():Observable<any> {
-    return this.http.get(this.apiURL+'listPlace');
+  listUsers():Observable<any> {
+    return this.http.get(this.apiURL+'listUser');
   }
-
 }
