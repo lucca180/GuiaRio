@@ -1,0 +1,30 @@
+.background{
+    --background: url(../../assets/blue_background.jpg) center;
+}
+.email{
+    display: flex;
+    //Uso de margem negativa para por os campos acima da logo.
+    margin-top: -55%;
+    margin-left: 15px;
+    margin-right: 15px;
+    block-size: 60px;
+    align-items: center;
+    border-radius: 40px;
+}
+.senha{
+    display: flex;
+    margin-top: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
+    block-size: 60px;
+    align-items: center;
+    border-radius: 40px;
+}   
+.entrar{
+    margin-left: 63%;
+    margin-top: 5%;
+    margin-right:5%
+}
+
+
+

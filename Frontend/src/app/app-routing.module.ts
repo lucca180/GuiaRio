@@ -13,6 +13,18 @@ const routes: Routes = [
   {
     path: 'place/:id',
     loadChildren: () => import('./place/place-page.module').then( m => m.PlacePageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'cadastro',
+    loadChildren: () => import('./cadastro/cadastro.module').then( m => m.CadastroPageModule)
+  },
+  {
+    path: 'cadastro-guia',
+    loadChildren: () => import('./cadastro-guia/cadastro-guia.module').then( m => m.CadastroGuiaPageModule)
   }
 
 ];
