@@ -12,7 +12,6 @@ class Place extends Model
         $this->description = $request->description;
         $this->address = $request->address;
         $this->category = $request->category;
-        $this->rating = $request->rating;
         $this->site = $request->site;
         $this->photo = $request->photo;
 
@@ -32,9 +31,6 @@ class Place extends Model
         }
         if($request->category) {
             $this->category = $request->category;
-        }
-        if($request->rating) {
-            $this->rating = $request->rating;
         }
         if($request->site) {
             $this->site = $request->site;
