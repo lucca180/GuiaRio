@@ -1,24 +1,29 @@
-<ion-header>
-</ion-header>
-
 <ion-content class="background">
+    <header>
+        <h1>GuiaRio</h1>
+        <img src="../../assets/logo.svg"/>
+    </header>
     <!-- ion-img responsável pela logo -->
-    <ion-img src="../../assets/logo.svg" alt="imagem de montanha com sol (logo do app)"></ion-img>
-    <form [formGroup]="loginForm" (ngSubmit)="submitForm(loginForm)" >
-        <!-- itens responsáveis pelos 2 campos do formulário: email e senha -->
-        <ion-item class="email">
-            <ion-label position="floating">E-mail</ion-label>
-            <ion-input type="email" formControlName="email"></ion-input>
-        </ion-item>
-        <ion-item class="senha">
-            <ion-label position="floating">Senha</ion-label>
-            <ion-input type="password" formControlName="senha"></ion-input>
-        </ion-item>
-        <!-- div responsável pelo botão de entrar -->
-        <div class="entrar">
-            <ion-button type="submit" color="secondary" expand="full">Entrar</ion-button>
-        </div>
-    </form>
+    <!-- <div class="baseLogo">
+        <ion-img class="logo" src="../../assets/logo.svg" alt="imagem de montanha com sol (logo do app)"></ion-img>
+    </div> -->
+    <div class="mainContent"> 
+        <form [formGroup]="loginForm" (ngSubmit)="submitForm(loginForm)" >
+            <!-- itens responsáveis pelos 2 campos do formulário: email e senha -->
+            <ion-item class="email" color="light">
+                <ion-label position="floating">E-mail</ion-label>
+                <ion-input type="email" formControlName="email"></ion-input>
+            </ion-item>
+            <ion-item class="senha" color="light">
+                <ion-label position="floating">Senha</ion-label>
+                <ion-input type="password" formControlName="senha"></ion-input>
+            </ion-item>
+            <!-- div responsável pelo botão de entrar -->
+            <div class="entrar">
+                <ion-button type="submit" color="success" expand="full">Entrar</ion-button>
+            </div>
+        </form>
+    </div>
 </ion-content>
 
 
