@@ -17,4 +17,8 @@ export class PlacesService {
     return this.http.get(this.apiURL+'listPlace');
   }
 
+  getPlace(id):Observable<any> {
+    return this.http.get(this.apiURL+'showPlace/'+id);
+  }
+  
 }

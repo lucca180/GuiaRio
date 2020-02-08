@@ -11,7 +11,7 @@ const routes: Routes = [
     loadChildren: () => import('./pre-login/pre-login.module').then( m => m.PreLoginPageModule)
   },
   {
-    path: 'place',
+    path: 'place/:id',
     loadChildren: () => import('./place/place-page.module').then( m => m.PlacePageModule)
   }
 

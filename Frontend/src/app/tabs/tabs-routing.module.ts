@@ -37,16 +37,16 @@ const routes: Routes = [
           }
         ]
       },
-      {
-        path: 'place',
-        children: [
-          {
-            path: '',
-            loadChildren: () =>
-              import('../place/place-page.module').then(m => m.PlacePageModule)
-          }
-        ]
-      },
+      // {
+      //   path: 'place',
+      //   children: [
+      //     {
+      //       path: '',
+      //       loadChildren: () =>
+      //         import('../place/place-page.module').then(m => m.PlacePageModule)
+      //     }
+      //   ]
+      // },
       {
         path: '',
         redirectTo: '/tabs/home',

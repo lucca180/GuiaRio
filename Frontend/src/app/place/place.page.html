@@ -1,14 +1,14 @@
-<div class="themeWrapper cultureTheme">
+<div class="themeWrapper {{themeName}}">
   <ion-header>
     <div class="mainTitle">
       <ion-button (click)="goBack()" class="backButton"><fa-icon [icon]="faChevronLeft"></fa-icon></ion-button>
-      <h1>Corcovado</h1>
+      <h1>{{placeObj.name}}</h1>
     </div>
     <div class="otherInfos">
       <div class="left">
         <p class="reviewInfo"><fa-icon [icon]="faThumbsUp"></fa-icon>75% das pessoas recomendam</p>
-        <p><fa-icon [icon]="faMapMarkerAlt"></fa-icon>Alto da Boa Vista</p>
-        <p><fa-icon [icon]="faInfoCircle"></fa-icon>www.cristoredentoroficial.com.br</p>
+        <p><fa-icon [icon]="faMapMarkerAlt"></fa-icon>{{placeObj.address}}</p>
+        <p *ngIf="placeObj.site"><fa-icon [icon]="faInfoCircle"></fa-icon>{{placeObj.site}}</p>
       </div>
       <div class="right">
         <fa-icon (click)="toggleFavorite()" [icon]="faHeart"></fa-icon>
@@ -23,8 +23,7 @@
       </ion-fab-button>
     </ion-fab>
     
-    <img class="placeImage" 
-    src="https://s3.amazonaws.com/conhecer-wp/wp-content/uploads/2019/05/13180352/saida-pedagogica-rio-de-janeiro-corcovado-cristo-redentor-01.png"/>
+    <img class="placeImage" src="{{placeObj.photo}}"/>
     <div class="mainContent">
       <div *ngIf="!reviewFormActive" class="reviews">
         <h1>Avaliações (3)</h1>
