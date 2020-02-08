@@ -1,11 +1,9 @@
 .background{
-    //terá outra imagem de background.
-    --background: url("../../assets/background_login.jpg") no-repeat top right / cover;
-
+    --background: url(../../assets/blue_background.jpg) center;
 }
 .email{
     display: flex;
-    margin-top: 140px;
+    margin-top: -55%;
     margin-left: 15px;
     margin-right: 15px;
     block-size: 60px;
@@ -22,8 +20,9 @@
     border-radius: 40px;
 }   
 .entrar{
-    margin-left: 68%;
+    margin-left: 63%;
     margin-top: 5%;
+    margin-right:5%
 }
 
 
