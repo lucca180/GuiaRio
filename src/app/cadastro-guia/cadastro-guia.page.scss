@@ -1,0 +1,32 @@
+.titulo{
+    margin-left: 20px;
+    margin-top: 20px;
+    color: #f6f6f6;
+}
+.nomeSobrenome {
+    display: flex;
+    align-items: center;
+    margin-top: 25%;
+    flex: 1;
+}
+.campos1 {
+    margin: 0px 10px;
+    border-radius: 40px;
+}
+.campos2 {
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 10px;
+    border-radius: 40px;
+}
+.cadastrar {
+    margin-top: 42%;
+}
+.invalido {
+    --ion-label {
+        --color: #ff0000;
+    }
+    ion-input {
+        border-bottom: 1px #ff0000;
+    }
+}

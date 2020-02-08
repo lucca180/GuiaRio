@@ -1,0 +1,33 @@
+<ion-header>
+</ion-header>
+
+<ion-content class="background">
+    <!-- ion-img responsável pela logo -->
+    <ion-img src="../../assets/logo.svg" alt="imagem de montanha com sol (logo do app)"></ion-img>
+    <form [formGroup]="loginForm" (ngSubmit)="submitForm(loginForm)" >
+        <!-- itens responsáveis pelos 2 campos do formulário: email e senha -->
+        <ion-item class="email">
+            <ion-label position="floating">E-mail</ion-label>
+            <ion-input type="email" formControlName="email"></ion-input>
+        </ion-item>
+        <ion-item class="senha">
+            <ion-label position="floating">Senha</ion-label>
+            <ion-input type="password" formControlName="senha"></ion-input>
+        </ion-item>
+        <!-- div responsável pelo botão de entrar -->
+        <div class="entrar">
+            <ion-button type="submit" color="secondary" expand="full">Entrar</ion-button>
+        </div>
+    </form>
+</ion-content>
+
+
+
+<!-- <button (click)="openCamera()">
+  Camera
+</button>
+<button (click)="openGallery()">
+  galeria
+</button>
+<img src="{{myPhoto}}"> -->
+

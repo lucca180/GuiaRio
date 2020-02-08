@@ -1,0 +1,36 @@
+<ion-header>
+</ion-header>
+
+<ion-content color="primary">
+
+  <h1 class="titulo">Faça seu cadastro</h1>
+  <form [formGroup]="registerForm" (ngSubmit)="submitForm(registerForm)">  
+      <!-- div responsável pelos campos do nome e sobrenome e sua organização, no css, através da classe -->
+      <div class="nomeSobrenome">    
+          <ion-item class="campos1" [class.invalid]="registerForm.controls.name.touched">
+              <ion-label position="floating">Nome</ion-label>
+              <ion-input type="text" formControlName="name"></ion-input>
+          </ion-item>
+          <ion-item class="campos1" [class.invalid]="registerForm.controls.name.touched">
+              <ion-label position="floating">Sobrenome</ion-label>
+              <ion-input type="text" formControlName="lastName"></ion-input>
+          </ion-item>
+      </div>
+      <!-- Os itens a seguir são responsáveis pelos campos de formulário seguintes, email, senha e confirmação de senha -->
+      <ion-item class="campos2" [class.invalid]="registerForm.controls.name.touched">
+          <ion-label position="floating">E-mail</ion-label>
+          <ion-input type="email" formControlName="email"></ion-input>
+      </ion-item>
+      <ion-item class="campos2" [class.invalid]="registerForm.controls.name.touched">
+          <ion-label position="floating">Senha</ion-label>
+          <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+      <ion-item class="campos2" [class.invalid]="registerForm.controls.name.touched">      
+          <ion-label position="floating" >Confirme Sua Senha</ion-label>
+          <ion-input type="password" formControlName="passwordConfirm"></ion-input>
+      </ion-item>  
+      <!-- Botão responsável por ir para pagina de login apos o cadastro se for valido e também responsável pelo envio do formulário -->
+      <ion-button class="cadastrar" type="submit" expand="full" color="secondary" [disabled]="registerForm.invalid">Cadastrar</ion-button>
+  </form> 
+ 
+</ion-content>

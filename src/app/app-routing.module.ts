@@ -5,9 +5,18 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
-  },  {
-    path: 'pre-login',
-    loadChildren: () => import('./pre-login/pre-login.module').then( m => m.PreLoginPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'cadastro',
+    loadChildren: () => import('./cadastro/cadastro.module').then( m => m.CadastroPageModule)
+  },
+  {
+    path: 'cadastro-guia',
+    loadChildren: () => import('./cadastro-guia/cadastro-guia.module').then( m => m.CadastroGuiaPageModule)
   }
 
 ];
