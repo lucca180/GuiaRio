@@ -178,6 +178,9 @@ return [
         /* Passport */
         Laravel\Passport\PassportServiceProvider::class,
 
+        /* PT-BR Validator */
+        LaravelLegends\PtBrValidator\ValidatorProvider::class,
+
     ],
 
     /*
