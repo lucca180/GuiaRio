@@ -52,7 +52,7 @@ class PassportController extends Controller
             $validatorGuide = Validator::make($request->all(), [
 
                 'cpf' => 'required|cpf',
-                'phone_number' => 'required|telefone',
+                'phone_number' => 'required|celular_com_ddd',
                 'cadastur' => 'required|string'
 
             ]);
