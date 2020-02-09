@@ -14,6 +14,21 @@ class PassportController extends Controller
     public $successStatus = 200;
 
     public function register(Request $request) {
+
+        $validator = Validator::make( $request->all(), [
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required',
+            'passwordConfirm' => 'required|same:password',
+        ]);
+
+        if ( $validator->fails() ) {
+            return response()->json([
+                'message'=>'Erro!' .$Validator->errors(),
+                'data' => null,
+            ],6010);
+        }
      
         $newUser = new User;
 
