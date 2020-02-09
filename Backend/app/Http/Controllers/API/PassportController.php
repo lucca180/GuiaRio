@@ -15,20 +15,20 @@ class PassportController extends Controller
 
     public function register(Request $request) {
 
-        $validator = Validator::make( $request->all(), [
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required',
-            'passwordConfirm' => 'required|same:password',
-        ]);
+        // $validator = Validator::make( $request->all(), [
+        //     'first_name' => 'required',
+        //     'last_name' => 'required',
+        //     'email' => 'required|email',
+        //     'password' => 'required',
+        //     'passwordConfirm' => 'required|same:password',
+        // ]);
 
-        if ( $validator->fails() ) {
-            return response()->json([
-                'message'=>'Erro!' .$Validator->errors(),
-                'data' => null,
-            ],6010);
-        }
+        // if ( $validator->fails() ) {
+        //     return response()->json([
+        //         'message'=>'Erro!' .$validator->errors(),
+        //         'data' => null,
+        //     ],500);
+        // }
         
         $validatorUser = Validator::make($request->all(), [
 
@@ -37,28 +37,35 @@ class PassportController extends Controller
         'last_name' => 'required|alpha',
         'email' => 'required|email|unique:users,email',
         'password' => 'required|string',
+        'passwordConfirm' => 'required|same:password',
         'description' => 'string',
         'is_guide' => 'boolean',
-        'is_admin' => 'boolean'
+        'is_admin' => 'boolean',
     
         ]);
         
         if($validatorUser->fails()) {
-            return response()->json($validatorUser->errors());
+            return response()->json([
+                'message'=>'Erro!' .$validatorUser->errors(),
+                'data' => null,
+            ],500);
         }
-    
+
         /*Validações de guia*/
         if($request->is_guide) {
             $validatorGuide = Validator::make($request->all(), [
 
                 'cpf' => 'required|cpf',
-                'phone_number' => 'required|celular_com_ddd',
+                'phone_number' => 'required',
                 'cadastur' => 'required|string'
 
             ]);
     
             if($validatorGuide->fails()) {
-                    return response()->json($validatorGuide->errors());
+                return response()->json([
+                    'message'=>'Erro!' .$validatorUser->errors(),
+                    'data' => null,
+                ],500);
             }
         }
      
