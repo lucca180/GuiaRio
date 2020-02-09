@@ -1,0 +1,18 @@
+<ion-header>
+  <div class="backButton">
+    <ion-button (click)="goBack()" class="backButton"><fa-icon [icon]="faChevronLeft"></fa-icon></ion-button>
+  </div>
+  <div class="headerContent">
+    <img class="avatar" src="{{userObj.photo}}"/>
+    <h1>{{userObj.first_name}} {{userObj.last_name}}</h1>
+    <h2 *ngIf="userObj.is_guide">Guia Verificada</h2>
+    <p>{{userObj.description}}</p>
+    <div *ngIf="userObj.is_guide" class="guideButtons">
+      <ion-button color="light">Ligar</ion-button> <ion-button  color="light">Email</ion-button>
+    </div>
+  </div>
+</ion-header>
+
+<ion-content>
+  etc etc content
+</ion-content>

@@ -43,7 +43,7 @@ class UserController extends Controller
 
         $user = new User;
         $user->createUser($request);
-        return response()->json([$user]);
+        return response()->json($user);
     }
 
     public function listUser() {
@@ -53,7 +53,7 @@ class UserController extends Controller
 
     public function showUser($id) {
         $user = User::findOrFail($id);
-        return response()->json([$user]);
+        return response()->json($user);
     }
 
     public function updateUser(Request $request, $id) {
@@ -95,7 +95,7 @@ class UserController extends Controller
             }
 
             $user->updateUser($request);
-            return response()->json([$user]);
+            return response()->json($user);
 
         } else {
             return response()->json(['Este usuário não existe!']);

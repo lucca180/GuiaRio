@@ -25,6 +25,10 @@ const routes: Routes = [
   {
     path: 'cadastro-guia',
     loadChildren: () => import('./cadastro-guia/cadastro-guia.module').then( m => m.CadastroGuiaPageModule)
+  },
+  {
+    path: 'profile/:id',
+    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
   }
 
 ];
