@@ -29,9 +29,9 @@ class CreateUsersTable extends Migration
             $table->boolean('is_admin')->default(0);
 
             /* Atributos exclusivos de guia */
-            $table->string('cpf')->nullable();
-            $table->string('phone_number')->nullable();
-            $table->string('cadastur')->nullable();
+            $table->string('cpf')->nullable()->unique();
+            $table->string('phone_number')->nullable()->unique();
+            $table->string('cadastur')->nullable()->unique();
 
             $table->rememberToken();
             $table->timestamps();
