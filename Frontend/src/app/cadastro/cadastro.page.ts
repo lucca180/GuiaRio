@@ -17,13 +17,17 @@ export class CadastroPage implements OnInit {
 
     senhaIgual = true;
 
-    constructor(public formbuilder: FormBuilder, private storage: Storage, public router: Router, public toastController: ToastController, public authService: AuthService) {
+    constructor( public formbuilder: FormBuilder, 
+                 private storage: Storage, 
+                 public router: Router, 
+                 public toastController: ToastController, 
+                 public authService: AuthService, ) {
 
         //Código responsável pelo registro dos campos do formulário.
 
         this.registerForm = this.formbuilder.group({
-            name: [null, [Validators.required, Validators.minLength(3)]],
-            lastName: [null, [Validators.required, Validators.minLength(3)]],
+            first_name: [null, [Validators.required, Validators.minLength(3)]],
+            last_name: [null, [Validators.required, Validators.minLength(3)]],
             email: [null, [Validators.required, Validators.email]],
             password: [null, [Validators.required, Validators.minLength(6)]],
             passwordConfirm: [null, [Validators.required, Validators.minLength(6)]]
@@ -48,10 +52,10 @@ export class CadastroPage implements OnInit {
     submitForm( form ) {
         this.senhaIgual = form.value.passwordConfirm == form.value.password
         let array = JSON.stringify(form.value);
-        if (this.senhaIgual == true) {
-            console.log(array);
-            console.log(form);
-            console.log(form.value);
+        if ( this.senhaIgual == true ) {
+            console.log( array );
+            console.log( form );
+            console.log( form.value );
             return this.registrarUsuario( form );
         //  this.storage.set('name', this.registerForm.value.name).then(
         //     (valor) => {
@@ -71,6 +75,8 @@ export class CadastroPage implements OnInit {
     // get() {
     //     this.storage.get('name');
     // }
+
+    //Função para registrar o usuário no banco de dados(integração)
 
     registrarUsuario( form ) {
         if ( form.status == "VALID" ) {

@@ -9,7 +9,7 @@ export class AuthService {
 
   constructor( public http: HttpClient ) { }
 
-  apiUrl: string = "http://127.0.0.1:8000/";
+  apiUrl: string = "http://localhost:8000/api/";
 
   httpHeaders: any = {
     headers: {
@@ -21,7 +21,6 @@ export class AuthService {
   registrarUsuario( form ): Observable<any> {
     return this.http.post( this.apiUrl + 'register', form, this.httpHeaders);
   }
-
 }
 
 

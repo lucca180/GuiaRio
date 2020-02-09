@@ -1,43 +1,43 @@
 <ion-header>
 </ion-header>
 
-<ion-content color="primary">
+<ion-content>
 
   <h1 class="titulo">Faça seu cadastro</h1>
   <form [formGroup]="registerForm" (ngSubmit)="submitForm(registerForm)">
       <!-- div responsável pelos campos do nome e sobrenome e sua organização, no css, através da classe -->
       <div class="nomeSobrenome">
-          <ion-item class="campos1" [class.invalid]="registerForm.controls.name.touched">
+          <ion-item color="light" class="campos1" [class.invalid]="registerForm.controls.first_name.touched">
               <ion-label position="floating">Nome</ion-label>
-              <ion-input type="text" formControlName="name"></ion-input>
+              <ion-input type="text" formControlName="first_name"></ion-input>
           </ion-item>
-          <ion-item class="campos1" [class.invalid]="registerForm.controls.lastName.touched">
+          <ion-item color="light" class="campos1" [class.invalid]="registerForm.controls.last_name.touched">
               <ion-label position="floating">Sobrenome</ion-label>
-              <ion-input type="text" formControlName="lastName"></ion-input>
+              <ion-input type="text" formControlName="last_name"></ion-input>
           </ion-item>
       </div>
       <!-- Os ites a seguir são responsáveis pelos campos de formulário seguintes, email, senha, confirmação de senha, cpf, telefone e cadastur -->
-      <ion-item class="campos2" [class.invalid]="registerForm.controls.email.touched">
+      <ion-item color="light" class="campos2" [class.invalid]="registerForm.controls.email.touched">
           <ion-label position="floating">E-mail</ion-label>
           <ion-input type="email" formControlName="email"></ion-input>
       </ion-item>
-      <ion-item class="campos2" [class.invalid]="registerForm.controls.password.touched">
+      <ion-item color="light" class="campos2" [class.invalid]="registerForm.controls.password.touched">
           <ion-label position="floating">Senha</ion-label>
           <ion-input type="password" formControlName="password"></ion-input>
       </ion-item>
-      <ion-item class="campos2" [class.invalid]="registerForm.controls.passwordConfirm.touched">      
+      <ion-item color="light" class="campos2" [class.invalid]="registerForm.controls.passwordConfirm.touched">      
           <ion-label position="floating">Confirme Sua Senha</ion-label>
           <ion-input type="password" formControlName="passwordConfirm"></ion-input>
       </ion-item>
-      <ion-item class="campos2" [class.invalid]="registerForm.controls.CPF.touched">
+      <ion-item color="light" class="campos2" [class.invalid]="registerForm.controls.cpf.touched">
           <ion-label position="floating">CPF</ion-label>
-          <ion-input type="string" formControlName="CPF"></ion-input>
+          <ion-input type="string" formControlName="cpf"></ion-input>
       </ion-item>
-      <ion-item class="campos2" [class.invalid]="registerForm.controls.telefone.touched">
-          <ion-label position="floating">Telefone</ion-label>
-          <ion-input type="tel" formControlName="telefone"></ion-input>
+      <ion-item color="light" class="campos2" [class.invalid]="registerForm.controls.phone_number.touched">
+          <ion-label position="floating">Telefone(Com DDD)</ion-label>
+          <ion-input type="tel" formControlName="phone_number"></ion-input>
       </ion-item>
-      <ion-item class="campos2" [class.invalid]="registerForm.controls.cadastur.touched">
+      <ion-item color="light" class="campos2" [class.invalid]="registerForm.controls.cadastur.touched">
           <ion-label position="floating">cadastur</ion-label>
           <ion-input type="string" formControlName="cadastur"></ion-input>
       </ion-item>

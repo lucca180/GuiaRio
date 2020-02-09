@@ -7,25 +7,25 @@
   <form [formGroup]="registerForm" (ngSubmit)="submitForm(registerForm)">  
       <!-- div responsável pelos campos do nome e sobrenome e sua organização, no css, através da classe -->
       <div class="nomeSobrenome">    
-          <ion-item color="light" class="campos1" [class.invalid]="registerForm.controls.name.touched">
+          <ion-item color="light" class="campos1" [class.invalid]="registerForm.controls.first_name.touched">
               <ion-label position="floating">Nome</ion-label>
-              <ion-input type="text" formControlName="name"></ion-input>
+              <ion-input type="text" formControlName="first_name"></ion-input>
           </ion-item>
-          <ion-item color="light" class="campos1" [class.invalid]="registerForm.controls.name.touched">
+          <ion-item color="light" class="campos1" [class.invalid]="registerForm.controls.last_name.touched">
               <ion-label position="floating">Sobrenome</ion-label>
-              <ion-input type="text" formControlName="lastName"></ion-input>
+              <ion-input type="text" formControlName="last_name"></ion-input>
           </ion-item>
       </div>
       <!-- Os itens a seguir são responsáveis pelos campos de formulário seguintes, email, senha e confirmação de senha -->
-      <ion-item color="light" class="campos2" [class.invalid]="registerForm.controls.name.touched">
+      <ion-item color="light" class="campos2" [class.invalid]="registerForm.controls.email.touched">
           <ion-label position="floating">E-mail</ion-label>
           <ion-input type="email" formControlName="email"></ion-input>
       </ion-item>
-      <ion-item color="light" class="campos2" [class.invalid]="registerForm.controls.name.touched">
+      <ion-item color="light" class="campos2" [class.invalid]="registerForm.controls.password.touched">
           <ion-label position="floating">Senha</ion-label>
           <ion-input type="password" formControlName="password"></ion-input>
       </ion-item>
-      <ion-item color="light" class="campos2" [class.invalid]="registerForm.controls.name.touched">      
+      <ion-item color="light" class="campos2" [class.invalid]="registerForm.controls.passwordConfirm.touched">      
           <ion-label position="floating" >Confirme Sua Senha</ion-label>
           <ion-input type="password" formControlName="passwordConfirm"></ion-input>
       </ion-item>  
@@ -34,3 +34,4 @@
   </form> 
  
 </ion-content>
+
