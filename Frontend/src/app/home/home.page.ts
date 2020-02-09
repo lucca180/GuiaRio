@@ -52,14 +52,13 @@ export class HomePage {
 
   getPlaces(){
     this.places.listPlaces().subscribe(res => {
-      this.placesArr = res[0];
+      this.placesArr = res;
     })
   }
 
   getGuias(){
     this.users.listUsers().subscribe(res => {
-      this.guidesArr = res[0];
-      console.log(res[0])
+      this.guidesArr = res;
     });
   }
 

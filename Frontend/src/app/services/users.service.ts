@@ -13,4 +13,8 @@ export class UsersService {
   listUsers():Observable<any> {
     return this.http.get(this.apiURL+'listUser');
   }
+
+  getUser(id):Observable<any> {
+    return this.http.get(this.apiURL+'showUser/'+id);
+  }
 }

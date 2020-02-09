@@ -29,6 +29,38 @@ class PassportController extends Controller
                 'data' => null,
             ],6010);
         }
+        
+        $validatorUser = Validator::make($request->all(), [
+
+        /*Validações de usuário*/
+        'first_name' => 'required|alpha',
+        'last_name' => 'required|alpha',
+        'email' => 'required|email|unique:users,email',
+        'password' => 'required|string',
+        'description' => 'string',
+        'is_guide' => 'boolean',
+        'is_admin' => 'boolean'
+    
+        ]);
+        
+        if($validatorUser->fails()) {
+            return response()->json($validatorUser->errors());
+        }
+    
+        /*Validações de guia*/
+        if($request->is_guide) {
+            $validatorGuide = Validator::make($request->all(), [
+
+                'cpf' => 'required|cpf',
+                'phone_number' => 'required|telefone',
+                'cadastur' => 'required|string'
+
+            ]);
+    
+            if($validatorGuide->fails()) {
+                    return response()->json($validatorGuide->errors());
+            }
+        }
      
         $newUser = new User;
 
@@ -49,7 +81,7 @@ class PassportController extends Controller
         }
 
         $newUser->save();
-        $success['token'] = $newUser->createToken('MyApp')->accessToken;
+        $success['token'] = $newUser->createToken('GuiaRio')->accessToken;
         $success['name'] = $newUser->name;
         return response()->json(['success' => $success], $this->successStatus);
     }
@@ -57,7 +89,7 @@ class PassportController extends Controller
     public function login() {
         if(Auth::attempt(['email'=>request('email'),'password'=>request('password')])) {
             $user = Auth::user();
-            $success['token'] = $user->createToken('MyApp')->accessToken;
+            $success['token'] = $user->createToken('GuiaRio')->accessToken;
             return response()->json(['success'=>$success],$this->successStatus);
         } else {
             return response()->json(['error'=>'Unauthorized'],401);
