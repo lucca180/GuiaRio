@@ -1,3 +1,4 @@
+import { AuthService } from './../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -16,7 +17,7 @@ export class CadastroPage implements OnInit {
 
     senhaIgual = true;
 
-    constructor(public formbuilder: FormBuilder, private storage: Storage, public router: Router, public toastController: ToastController) {
+    constructor(public formbuilder: FormBuilder, private storage: Storage, public router: Router, public toastController: ToastController, public authService: AuthService) {
 
         //Código responsável pelo registro dos campos do formulário.
 
@@ -44,14 +45,14 @@ export class CadastroPage implements OnInit {
     //Função repsonsável pelo envio do formulário e no comentário uma função que envia e pega o nome(nesse caso) no storage.
     //Também está responsável por levar o usuário para o login se o cadastro for válido.
 
-    submitForm(form) {
+    submitForm( form ) {
         this.senhaIgual = form.value.passwordConfirm == form.value.password
         let array = JSON.stringify(form.value);
         if (this.senhaIgual == true) {
             console.log(array);
             console.log(form);
             console.log(form.value);
-            return this.router.navigate(['../login'])
+            return this.registrarUsuario( form );
         //  this.storage.set('name', this.registerForm.value.name).then(
         //     (valor) => {
         //          console.log(valor);
@@ -70,5 +71,17 @@ export class CadastroPage implements OnInit {
     // get() {
     //     this.storage.get('name');
     // }
+
+    registrarUsuario( form ) {
+        if ( form.status == "VALID" ) {
+            this.authService.registrarUsuario( form.value ).subscribe(
+                ( res ) => {
+                    console.log( res );
+                    this.router.navigate(['../login']);
+                }
+            );
+        }
+    }
+
 
 }
