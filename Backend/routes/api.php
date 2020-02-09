@@ -21,6 +21,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 /*Rotas do usuário*/
 Route::get('listUser', 'UserController@listUser');
 Route::get('showUser/{id}', 'UserController@showUser');
+Route::get('showUserPhoto/{id}', 'UserController@showUserPhoto');
 Route::post('createUser', 'UserController@createUser');
 Route::put('updateUser/{id}', 'UserController@updateUser');
 Route::delete('deleteUser/{id}', 'UserController@deleteUser');
@@ -28,6 +29,7 @@ Route::delete('deleteUser/{id}', 'UserController@deleteUser');
 /*Rotas dos lugares*/
 Route::get('listPlace', 'PlaceController@listPlace');
 Route::get('showPlace/{id}', 'PlaceController@showPlace');
+Route::get('showPlacePhoto/{id}', 'PlaceController@showPlacePhoto');
 Route::post('createPlace', 'PlaceController@createPlace');
 Route::put('updatePlace/{id}', 'PlaceController@updatePlace');
 Route::delete('deletePlace/{id}', 'PlaceController@deletePlace');
