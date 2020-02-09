@@ -25,9 +25,9 @@ class PassportController extends Controller
 
         if ( $validator->fails() ) {
             return response()->json([
-                'message'=>'Erro!' .$Validator->errors(),
+                'message'=>'Erro!' .$validator->errors(),
                 'data' => null,
-            ],6010);
+            ],500);
         }
         
         $validatorUser = Validator::make($request->all(), [

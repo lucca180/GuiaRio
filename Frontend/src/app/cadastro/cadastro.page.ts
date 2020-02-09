@@ -22,8 +22,8 @@ export class CadastroPage implements OnInit {
         //Código responsável pelo registro dos campos do formulário.
 
         this.registerForm = this.formbuilder.group({
-            name: [null, [Validators.required, Validators.minLength(3)]],
-            lastName: [null, [Validators.required, Validators.minLength(3)]],
+            first_name: [null, [Validators.required, Validators.minLength(3)]],
+            last_name: [null, [Validators.required, Validators.minLength(3)]],
             email: [null, [Validators.required, Validators.email]],
             password: [null, [Validators.required, Validators.minLength(6)]],
             passwordConfirm: [null, [Validators.required, Validators.minLength(6)]]
