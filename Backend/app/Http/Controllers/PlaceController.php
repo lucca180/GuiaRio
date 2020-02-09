@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use App\Place;
 
 class PlaceController extends Controller
 {
     public function createPlace(Request $request) {
+
+        $place = new Place;
 
         $validatorPlace = Validator::make($request->all(), [
 
@@ -18,14 +21,29 @@ class PlaceController extends Controller
         'address' => 'required|string',
         'category' => 'integer',
         'site' => 'url',
+        'photo' => 'file|image|mimes:jpeg,png,gif,webp|max:2048'
         ]);
         
         if($validatorPlace->fails()) {
             return response()->json($validatorPlace->errors());
         }
 
-        $place = new Place;
         $place->createPlace($request);
+
+        if($request->photo) {
+            /* Código do Storage */
+            if (!Storage::exists('localPlacePhotos/')) {
+                Storage::makeDirectory('localPlacePhotos/',0775,true);
+            }
+                        
+            $file = $request->file('photo');
+            $filename = $place->id. '.' .$file->getClientOriginalExtension();
+            $path = $file->storeAs('localPlacePhotos',$filename);
+            $place->photo = $path; 
+        }
+
+        $place->save();
+
         return response()->json([$place]);
     }
 
@@ -39,13 +57,18 @@ class PlaceController extends Controller
         return response()->json([$place]);
     }
 
+    public function showPlacePhoto($id) {
+        $place = Place::findOrFail($id);
+        return Storage::download($place->photo);
+    }
+
     public function updatePlace(Request $request, $id) {
 
         $place = Place::find($id);
 
         if($place) {
 
-            $validatorUser = Validator::make($request->all(), [
+            $validatorPlace = Validator::make($request->all(), [
 
             /*Validações de lugar*/
             'name' => 'string',
@@ -53,14 +76,30 @@ class PlaceController extends Controller
             'address' => 'string',
             'category' => 'integer',
             'site' => 'url',
+            'photo' => 'file|image|mimes:jpeg,png,gif,webp|max:2048'
             
             ]);
                 
-            if($validatorUser->fails()) {
-                return response()->json($validatorUser->errors());
+            if($validatorPlace->fails()) {
+                return response()->json($validatorPlace->errors());
             }
 
             $place->updatePlace($request, $id);
+
+            if($request->photo) {
+                /* Código do Storage */
+                if (!Storage::exists('localPlacePhotos/')) {
+                    Storage::makeDirectory('localPlacePhotos/',0775,true);
+                }
+                            
+                $file = $request->file('photo');
+                $filename = $place->id. '.' .$file->getClientOriginalExtension();
+                $path = $file->storeAs('localPlacePhotos',$filename);
+                $place->photo = $path; 
+            }
+
+            $place->save();
+
             return response()->json([$place]);
 
         } else {
@@ -69,7 +108,11 @@ class PlaceController extends Controller
     }
 
     public function deletePlace($id) {
+        $place = Place::findOrFail($id);
+        Storage::delete($place->photo);
+
         Place::destroy($id);
         return response()->json(['Lugar deletado!']);
     }
+
 }
