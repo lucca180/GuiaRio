@@ -121,9 +121,6 @@ class UserController extends Controller
             }
 
             $user->updateUser($request);
-<<<<<<< HEAD
-            return response()->json($user);
-=======
 
             if($request->photo) {
                 /* Código do Storage */
@@ -140,7 +137,6 @@ class UserController extends Controller
             $user->save();
 
             return response()->json([$user]);
->>>>>>> origin/Renato_back
 
         } else {
             return response()->json(['Este usuário não existe!']);

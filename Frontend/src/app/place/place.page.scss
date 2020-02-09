@@ -91,9 +91,20 @@ ion-content .mainContent h1{
 }
 
 
-// .natureTheme{
-    
-// }
+// ---------- Themes ------------ //
+
+.defaultTheme ion-header{
+    background: #3A57E2;
+    color: #fff;
+}
+
+.defaultTheme .backButton{
+    color: #3A57E2;
+}
+
+.defaultTheme ion-fab-button{
+    --background: #3A57E2;
+}
 
 .natureTheme ion-header{
     background: #2C9A62;

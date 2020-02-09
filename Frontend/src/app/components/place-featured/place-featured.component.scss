@@ -38,3 +38,29 @@
 ion-ripple-effect{
     z-index: 10000;
 }
+
+.placeHolder img{
+    filter: brightness(5);
+    opacity: .57;
+    object-fit: fill;
+}
+
+.placeHolder{
+    background: #3A57E2;
+}
+
+.nature{
+    background: #2C9A62;
+}
+
+.food{
+    background: #D81B60;
+}
+
+.beach{
+    background: #FFA000;
+}
+
+.culture{
+    background: #AB47BC;
+}

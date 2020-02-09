@@ -30,6 +30,7 @@ export class ProfilePage implements OnInit {
   getUser(){
     this.users.getUser(this.userId).subscribe(res => {
       this.userObj = res;
+      if(!res.photo) this.userObj.photo = '../../../assets/avatar_placeholder.png';
     })
   }
 

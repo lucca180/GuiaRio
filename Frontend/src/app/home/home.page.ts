@@ -51,14 +51,16 @@ export class HomePage {
 
 
   getPlaces(){
+    this.places.listPlacesWithPhoto();
     this.places.listPlaces().subscribe(res => {
+      console.log(res);
       this.placesArr = res;
     })
   }
 
   getGuias(){
     this.users.listUsers().subscribe(res => {
-      this.guidesArr = res;
+      this.guidesArr = res.filter(x => x.is_guide);
     });
   }
 

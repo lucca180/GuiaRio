@@ -29,6 +29,8 @@ export class GuideCardComponent implements OnInit {
     this.navCtrl.navigateForward('/profile/'+this.guideObj.id)
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    if(!this.guideObj.photo) this.guideObj.photo = '../../../assets/avatar_placeholder.png';
+  }
 
 }

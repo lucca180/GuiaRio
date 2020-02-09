@@ -17,8 +17,24 @@ export class PlacesService {
     return this.http.get(this.apiURL+'listPlace');
   }
 
+  async listPlacesWithPhoto(){
+    try{
+      let res:any = await this.http.get(this.apiURL+'listPlace').toPromise();
+      
+      for(let place of res){
+        place.photo = await this.http.get(this.apiURL+'showPlacePhoto/'+place.id).toPromise();
+      }
+
+      console.log(res);
+      return res;
+    }catch(e){
+      console.error(e);
+    }
+  }
+
   getPlace(id):Observable<any> {
     return this.http.get(this.apiURL+'showPlace/'+id);
   }
+
   
 }
