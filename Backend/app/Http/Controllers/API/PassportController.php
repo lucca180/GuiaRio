@@ -15,21 +15,6 @@ class PassportController extends Controller
 
     public function register(Request $request) {
 
-        // $validator = Validator::make( $request->all(), [
-        //     'first_name' => 'required',
-        //     'last_name' => 'required',
-        //     'email' => 'required|email',
-        //     'password' => 'required',
-        //     'passwordConfirm' => 'required|same:password',
-        // ]);
-
-        // if ( $validator->fails() ) {
-        //     return response()->json([
-        //         'message'=>'Erro!' .$validator->errors(),
-        //         'data' => null,
-        //     ],500);
-        // }
-        
         $validatorUser = Validator::make($request->all(), [
 
         /*Validações de usuário*/
@@ -57,13 +42,13 @@ class PassportController extends Controller
 
                 'cpf' => 'required|cpf',
                 'phone_number' => 'required',
-                'cadastur' => 'required|string'
+                'cadastur' => 'required|string',
 
             ]);
     
             if($validatorGuide->fails()) {
                 return response()->json([
-                    'message'=>'Erro!' .$validatorUser->errors(),
+                    'message'=>'Erro!' .$validatorGuide->errors(),
                     'data' => null,
                 ],500);
             }

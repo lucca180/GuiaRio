@@ -19,7 +19,7 @@ export class AuthService {
   }
 
   registrarUsuario( form ): Observable<any> {
-    return this.http.post( this.apiUrl + 'register', form, this.httpHeaders);
+    return this.http.post( this.apiUrl + 'register', form);
   }
 }
 
