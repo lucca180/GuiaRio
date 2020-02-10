@@ -4,7 +4,7 @@
   </div>
   <div *ngIf="!editMode" class="headerContent">
     <img class="avatar" src="{{userObj.photo}}"/>
-    <h1>{{userObj.first_name}} {{userObj.last_name}} <fa-icon [icon]="faEdit"></fa-icon></h1>
+    <h1>{{userObj.first_name}} {{userObj.last_name}} <fa-icon *ngIf="isOwner" (click)="toggleEdit()" [icon]="faEdit"></fa-icon></h1>
     <h2 *ngIf="userObj.is_guide">Guia Verificado</h2>
     <p>{{userObj.description}}</p>
     <div *ngIf="userObj.is_guide" class="guideButtons">
@@ -12,35 +12,37 @@
     </div>
   </div>
   <div *ngIf="editMode" class="headerContent editMode">
-    <div (click)="selectImage()" class="avatar">
-      <img class="avatar" src="{{userObj.photo}}"/> 
-      <p>Clique para Alterar</p>
-    </div>
-    <div class="lineInput">
+    <form [formGroup]="editForm" class="headerContent editMode">
+      <div (click)="selectImage()" class="avatar">
+        <img class="avatar" src="{{userObj.photo}}"/> 
+        <p>Clique para Alterar</p>
+      </div>
+      <div class="lineInput">
+        <ion-item >
+          <ion-label color="light" position="stacked">Nome</ion-label>
+          <ion-input color="light" formControlName="first_name" value="{{userObj.first_name}}"></ion-input> 
+        </ion-item>
+        <ion-item>
+          <ion-label color="light" position="stacked">Sobrenome</ion-label>
+          <ion-input color="light" value="{{userObj.last_name}}"></ion-input> 
+        </ion-item>
+      </div> 
       <ion-item>
-        <ion-label color="light" position="stacked">Nome</ion-label>
-        <ion-input color="light" value="{{userObj.first_name}}"></ion-input> 
+        <ion-label color="light" position="floating">Descrição</ion-label>
+        <ion-textarea autoGrow color="light" value="{{userObj.description}}"></ion-textarea>
       </ion-item>
-      <ion-item>
-        <ion-label color="light" position="stacked">Sobrenome</ion-label>
-        <ion-input color="light" value="{{userObj.last_name}}"></ion-input> 
-      </ion-item>
-    </div> 
-    <ion-item>
-      <ion-label color="light" position="floating">Descrição</ion-label>
-      <ion-textarea autoGrow color="light" value="{{userObj.description}}"></ion-textarea>
-    </ion-item>
-    <div *ngIf="userObj.is_guide" class="lineInput">
-      <ion-item>
-        <ion-label color="light" position="floating">Email</ion-label>
-        <ion-input color="light" value="{{userObj.email}}"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label color="light" position="floating">Telefone</ion-label>
-        <ion-input color="light" value="{{userObj.phone_number}}"></ion-input>
-      </ion-item>
-    </div>
-    <ion-button expand="full" color="light">Salvar Alterações</ion-button>
+      <div *ngIf="userObj.is_guide" class="lineInput">
+        <ion-item>
+          <ion-label color="light" position="floating">Email</ion-label>
+          <ion-input color="light" value="{{userObj.email}}"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label color="light" position="floating">Telefone</ion-label>
+          <ion-input color="light" value="{{userObj.phone_number}}"></ion-input>
+        </ion-item>
+      </div>
+      <ion-button expand="full" color="light">Salvar Alterações</ion-button>
+    </form>
   </div>
 </ion-header>
 
