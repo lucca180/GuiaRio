@@ -44,7 +44,7 @@ export class ProfilePage implements OnInit {
     
       this.editForm = this.formBuilder.group({
         // photo: [this.userObj.photo],
-        description: [null],
+        description: [''],
       });
     }
   
@@ -69,7 +69,8 @@ export class ProfilePage implements OnInit {
     this.users.updateUser(this.userId, valuesObj).subscribe(res=>{
       console.log(res);
       localStorage.setItem('userData', JSON.stringify(res[0]));
-      //this.userObj = res[0];
+      this.userObj = res[0];
+      this.editMode = false;
     })
   }
 
@@ -98,6 +99,7 @@ export class ProfilePage implements OnInit {
     
     if(!this.userId){
       let user = JSON.parse(localStorage.getItem("userData"));
+      console.log("userData ", user)
       if(!user) return this.router.navigateByUrl("/pre-login");
       this.userObj = user;
       this.userId = user.id;
