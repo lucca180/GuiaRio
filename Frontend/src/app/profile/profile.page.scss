@@ -89,3 +89,10 @@ ion-header{
     --color-activated: #fff;
     margin: 0 5px;
 }
+
+.editMode form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+}

@@ -38,7 +38,7 @@ export class LoginPage implements OnInit {
       if ( form.status == "VALID" ) {
           this.authService.logarUsuario( form.value ).subscribe(res => {
               console.log( res.message );
-              localStorage.setItem( 'userData', JSON.stringify(res.data.user));
+              localStorage.setItem( 'userData', JSON.stringify(res.data.user) );
               localStorage.setItem( 'userToken', res.data.token );
               this.router.navigate(['../tabs/home'])
       });

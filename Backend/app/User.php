@@ -78,9 +78,9 @@ class User extends Authenticatable
         if($request->description) {
             $this->description = $request->description;
         }
-        if($request->photo) {
+        /* if($request->photo) {
             $this->photo = $request->photo;
-        }
+        } */
 
         /* Update atributos de guia */
         if($request->cpf) {

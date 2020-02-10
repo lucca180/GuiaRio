@@ -127,7 +127,6 @@ class UserController extends Controller
                 if (!Storage::exists('localUserPhotos/')) {
                     Storage::makeDirectory('localUserPhotos/',0775,true);
                 }
-                            
                 $file = $request->file('photo');
                 $filename = $user->id. '.' .$file->getClientOriginalExtension();
                 $path = $file->storeAs('localUserPhotos',$filename);
