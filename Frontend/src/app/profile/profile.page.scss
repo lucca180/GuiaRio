@@ -34,6 +34,11 @@ ion-header{
     font-weight: 400;
 }
 
+.headerContent fa-icon{
+    font-size: medium;
+    vertical-align: super;
+}
+
 .headerContent h2{
     font-size: 18px;
     margin: 0;
@@ -49,4 +54,38 @@ ion-header{
 
 .headerContent .guideButtons ion-button{
     margin: 0 10px;
+}
+
+.editMode .avatar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.editMode .avatar img{
+    position: absolute;
+    z-index: 0;
+    filter: brightness(0.5);
+}
+
+.editMode .avatar p{
+    z-index: 100;
+    color: #ffff;
+    opacity: 1;
+}
+
+.editMode .lineInput{
+    display: flex;
+    margin: 20px 0;
+}
+
+.editMode ion-item{
+    width: 100%;
+    background: transparent;
+    --background: transparent;
+    --color-activated: #fff;
+    --highlight-color-focused: #fff;
+    --color-activated: #fff;
+    margin: 0 5px;
 }
