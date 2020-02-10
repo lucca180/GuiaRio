@@ -78,15 +78,45 @@ class PassportController extends Controller
         return response()->json(['success' => $success], $this->successStatus);
     }
     
-    public function login() {
-        if(Auth::attempt(['email'=>request('email'),'password'=>request('password')])) {
+    public function login( Request $request ) {
+
+        $fields = [
+            'email' => $request->email,
+            'password' => $request->password,
+        ];
+
+        $access = Auth::attempt( $fields );
+
+        if( $access ) { 
+
             $user = Auth::user();
-            $success['token'] = $user->createToken('GuiaRio')->accessToken;
-            return response()->json(['success'=>$success],$this->successStatus);
-        } else {
-            return response()->json(['error'=>'Unauthorized'],401);
+            $token = $user->createToken('GuiaRio')->accessToken;
+
+            return response()->json( [
+                'message'=> "login efetuado com sucesso!",
+                'data' => [
+                    'user' => $user,
+                    'token' => $token,
+                ],
+            ], 200);
+        }
+        else {
+            return response()->json( [
+                'message'=> "Email ou senha inválidos.",
+                'data'=> null,
+            ], 401);
         }
     }
+
+    // public function login() {
+    //     if(Auth::attempt(['email'=>request('email'),'password'=>request('password')])) {
+    //         $user = Auth::user();
+    //         $success['token'] = $user->createToken('GuiaRio')->accessToken;
+    //         return response()->json(['success'=>$success],$this->successStatus);
+    //     } else {
+    //         return response()->json(['error'=>'Unauthorized'],401);
+    //     }
+    // }
     
     public function getDetails() {
         $user = Auth::user();
