@@ -5,7 +5,8 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Passport\HasApiTokens; 
+use Laravel\Passport\HasApiTokens;
+use App\Place; 
 
 class User extends Authenticatable
 {
@@ -94,6 +95,14 @@ class User extends Authenticatable
         }
 
         $this->save();
+    }
+
+    public function ratings() {
+       return $this->belongsToMany('App\Place', 'ratings')->withPivot('rating', 'comment');
+    }
+
+    public function favorites() {
+        return $this->belongsToMany('App\Place', 'favorites');
     }
 
 }

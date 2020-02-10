@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\User;
 
 class Place extends Model
 {
@@ -41,5 +42,9 @@ class Place extends Model
 
         $this->save();
     }
-    
+
+    public function ratings() {
+        return $this->belongsToMany('App\User', 'ratings')->withPivot('rating', 'comment');
+    }
+
 }

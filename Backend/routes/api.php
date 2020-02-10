@@ -22,7 +22,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('listUser', 'UserController@listUser');
 Route::get('showUser/{id}', 'UserController@showUser');
 Route::get('showUserPhoto/{id}', 'UserController@showUserPhoto');
+Route::get('ratingsUser/{id}', 'UserController@ratingsUser');
+Route::get('favorites/{id}', 'UserController@favorites');
 Route::post('createUser', 'UserController@createUser');
+Route::post('createRating/{id}', 'UserController@createRating');
+Route::post('createFavorite/{id}', 'UserController@createFavorite');
 Route::put('updateUser/{id}', 'UserController@updateUser');
 Route::delete('deleteUser/{id}', 'UserController@deleteUser');
 
@@ -30,6 +34,7 @@ Route::delete('deleteUser/{id}', 'UserController@deleteUser');
 Route::get('listPlace', 'PlaceController@listPlace');
 Route::get('showPlace/{id}', 'PlaceController@showPlace');
 Route::get('showPlacePhoto/{id}', 'PlaceController@showPlacePhoto');
+Route::get('ratingsPlace/{id}', 'PlaceController@ratingsPlace');
 Route::post('createPlace', 'PlaceController@createPlace');
 Route::put('updatePlace/{id}', 'PlaceController@updatePlace');
 Route::delete('deletePlace/{id}', 'PlaceController@deletePlace');

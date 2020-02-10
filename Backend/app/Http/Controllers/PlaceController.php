@@ -62,6 +62,15 @@ class PlaceController extends Controller
         return Storage::download($place->photo);
     }
 
+    public function ratingsPlace($id) {
+        $place = Place::find($id);
+        if($place) {
+            return response()->json($place->ratings);
+        } else {
+            return response()->json(['Este lugar não existe']);
+        }
+    }
+
     public function updatePlace(Request $request, $id) {
 
         $place = Place::find($id);
