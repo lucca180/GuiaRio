@@ -15,21 +15,6 @@ class PassportController extends Controller
 
     public function register(Request $request) {
 
-        $validator = Validator::make( $request->all(), [
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required',
-            'passwordConfirm' => 'required|same:password',
-        ]);
-
-        if ( $validator->fails() ) {
-            return response()->json([
-                'message'=>'Erro!' .$validator->errors(),
-                'data' => null,
-            ],500);
-        }
-        
         $validatorUser = Validator::make($request->all(), [
 
         /*Validações de usuário*/
@@ -37,28 +22,35 @@ class PassportController extends Controller
         'last_name' => 'required|alpha',
         'email' => 'required|email|unique:users,email',
         'password' => 'required|string',
+        'passwordConfirm' => 'required|same:password',
         'description' => 'string',
         'is_guide' => 'boolean',
-        'is_admin' => 'boolean'
+        'is_admin' => 'boolean',
     
         ]);
         
         if($validatorUser->fails()) {
-            return response()->json($validatorUser->errors());
+            return response()->json([
+                'message'=>'Erro!' .$validatorUser->errors(),
+                'data' => null,
+            ],500);
         }
-    
+
         /*Validações de guia*/
         if($request->is_guide) {
             $validatorGuide = Validator::make($request->all(), [
 
                 'cpf' => 'required|cpf',
-                'phone_number' => 'required|celular_com_ddd',
-                'cadastur' => 'required|string'
+                'phone_number' => 'required',
+                'cadastur' => 'required|string',
 
             ]);
     
             if($validatorGuide->fails()) {
-                    return response()->json($validatorGuide->errors());
+                return response()->json([
+                    'message'=>'Erro!' .$validatorGuide->errors(),
+                    'data' => null,
+                ],500);
             }
         }
      
@@ -86,15 +78,45 @@ class PassportController extends Controller
         return response()->json(['success' => $success], $this->successStatus);
     }
     
-    public function login() {
-        if(Auth::attempt(['email'=>request('email'),'password'=>request('password')])) {
+    public function login( Request $request ) {
+
+        $fields = [
+            'email' => $request->email,
+            'password' => $request->password,
+        ];
+
+        $access = Auth::attempt( $fields );
+
+        if( $access ) { 
+
             $user = Auth::user();
-            $success['token'] = $user->createToken('GuiaRio')->accessToken;
-            return response()->json(['success'=>$success],$this->successStatus);
-        } else {
-            return response()->json(['error'=>'Unauthorized'],401);
+            $token = $user->createToken('GuiaRio')->accessToken;
+
+            return response()->json( [
+                'message'=> "login efetuado com sucesso!",
+                'data' => [
+                    'user' => $user,
+                    'token' => $token,
+                ],
+            ], 200);
+        }
+        else {
+            return response()->json( [
+                'message'=> "Email ou senha inválidos.",
+                'data'=> null,
+            ], 401);
         }
     }
+
+    // public function login() {
+    //     if(Auth::attempt(['email'=>request('email'),'password'=>request('password')])) {
+    //         $user = Auth::user();
+    //         $success['token'] = $user->createToken('GuiaRio')->accessToken;
+    //         return response()->json(['success'=>$success],$this->successStatus);
+    //     } else {
+    //         return response()->json(['error'=>'Unauthorized'],401);
+    //     }
+    // }
     
     public function getDetails() {
         $user = Auth::user();

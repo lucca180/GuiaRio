@@ -19,9 +19,11 @@ export class AuthService {
   }
 
   registrarUsuario( form ): Observable<any> {
-    return this.http.post( this.apiUrl + 'register', form);
+    return this.http.post( this.apiUrl + 'register', form, this.httpHeaders );
   }
-
+  logarUsuario( form ): Observable<any> {
+    return this.http.post( this.apiUrl + 'login', form, this.httpHeaders );
+  }
 }
 
 

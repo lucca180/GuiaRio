@@ -17,7 +17,11 @@ export class CadastroPage implements OnInit {
 
     senhaIgual = true;
 
-    constructor(public formbuilder: FormBuilder, private storage: Storage, public router: Router, public toastController: ToastController, public authService: AuthService) {
+    constructor( public formbuilder: FormBuilder, 
+                 private storage: Storage, 
+                 public router: Router, 
+                 public toastController: ToastController, 
+                 public authService: AuthService, ) {
 
         //Código responsável pelo registro dos campos do formulário.
 
@@ -48,10 +52,10 @@ export class CadastroPage implements OnInit {
     submitForm( form ) {
         this.senhaIgual = form.value.passwordConfirm == form.value.password
         let array = JSON.stringify(form.value);
-        if (this.senhaIgual == true) {
-            console.log(array);
-            console.log(form);
-            console.log(form.value);
+        if ( this.senhaIgual == true ) {
+            console.log( array );
+            console.log( form );
+            console.log( form.value );
             return this.registrarUsuario( form );
         //  this.storage.set('name', this.registerForm.value.name).then(
         //     (valor) => {
@@ -71,6 +75,8 @@ export class CadastroPage implements OnInit {
     // get() {
     //     this.storage.get('name');
     // }
+
+    //Função para registrar o usuário no banco de dados(integração)
 
     registrarUsuario( form ) {
         if ( form.status == "VALID" ) {
