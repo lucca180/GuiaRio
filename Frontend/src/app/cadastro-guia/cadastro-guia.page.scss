@@ -1,23 +1,34 @@
+.content{
+    display: flex;
+    height: 100%;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
 .titulo{
     text-align: center;
-    margin-top: 20px;
-    color: #3A57E2;
+    color: #000;
+    opacity: .67;
+    font-weight: 300;
 }
+
 .nomeSobrenome {
     display: flex;
     align-items: center;
-    margin-top: 25%;
+    //margin-top: 25%;
     flex: 1;
 }
 .campos1 {
     margin: 0px 10px;
-    border-radius: 40px;
+    //border-radius: 40px;
 }
 .campos2 {
     margin-right: 10px;
     margin-left: 10px;
     margin-top: 10px;
-    border-radius: 40px;
+   // border-radius: 40px;
 }
 .cadastrar {
     margin-top: 10%;
@@ -31,4 +42,29 @@
     ion-input {
         border-bottom: 1px #ff0000;
     }
+}
+
+
+
+
+.guide{
+	position: relative;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	flex-flow: column;
+	font-size: 18px;
+	text-align: center;
+	color: rgba(21, 51, 59, 0.87);
+	overflow: hidden;
+	padding: 20px;
+}
+
+.guide p{
+	margin: 0;
+	font-weight: lighter;
+}
+
+.guide b{
+	font-weight: 400;
 }

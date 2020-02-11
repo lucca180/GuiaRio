@@ -22,6 +22,8 @@ export class HomePage {
     icon: faCloudSun,
   }
 
+  user_name: string;
+
   placesArr = [
     {
       name: 'Corcovado',
@@ -107,4 +109,8 @@ export class HomePage {
     }
   }
 
+  ngOnInit() {
+    let user = JSON.parse(localStorage.getItem("userData"));
+    if(user) this.user_name = user.first_name;
+  }
 }

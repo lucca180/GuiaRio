@@ -68,7 +68,7 @@ export class ProfilePage implements OnInit {
 
     this.users.updateUser(this.userId, valuesObj).subscribe(res=>{
       console.log(res);
-      localStorage.setItem('userData', JSON.stringify(res[0]));
+      //localStorage.setItem('userData', JSON.stringify(res[0])); -------> CORRIGIR PARA CASO O UPDATE RETORNE ERRO
       this.userObj = res[0];
       this.editMode = false;
     })
