@@ -98,7 +98,7 @@ class User extends Authenticatable
     }
 
     public function ratings() {
-       return $this->belongsToMany('App\Place', 'ratings')->withPivot('rating', 'comment');
+        return $this->belongsToMany('App\Place', 'ratings')->withPivot('rating', 'comment', 'ratingDate');
     }
 
     public function favorites() {

@@ -19,6 +19,7 @@ class CreateRatingsTable extends Migration
             $table->unsignedBigInteger('place_id')->nullable();
             $table->boolean('rating');
             $table->longText('comment');
+            $table->dateTime('ratingDate');
             $table->timestamps();
         });
 

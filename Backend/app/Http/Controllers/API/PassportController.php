@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use App\Notifications\RegisterNotify;
 use App\User;
 use Auth;
 use DB;
@@ -68,6 +69,7 @@ class PassportController extends Controller
         $newUser->save();
         $success['token'] = $newUser->createToken('GuiaRio')->accessToken;
         $success['name'] = $newUser->name;
+        $newUser->notify(new RegisterNotify($newUser));
         return response()->json(['success' => $success], $this->successStatus);
     }
     
