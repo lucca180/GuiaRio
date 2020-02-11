@@ -25,6 +25,7 @@ export class PlacePage implements OnInit {
   faHeart = farHeart;
   faCommentAlt = faCommentAlt;
   faCheck = faCheck;  
+  faStatus = null;
 
   themeName = "defaultTheme";
 
@@ -41,11 +42,16 @@ export class PlacePage implements OnInit {
   reviewForm: FormGroup;
   reviewFormActive = false;
 
-  constructor(public formbuilder: FormBuilder, public places: PlacesService, private navCtrl: NavController, private route: ActivatedRoute) { 
-    this.reviewForm = this.formbuilder.group({
-      comment: [null, null],
-      recomended: ['', Validators.required],
-    })
+  constructor(
+    public formbuilder: FormBuilder, 
+    public places: PlacesService, 
+    private navCtrl: NavController, 
+    private route: ActivatedRoute) {
+
+      this.reviewForm = this.formbuilder.group({
+        comment: [null, null],
+        recomended: ['', Validators.required],
+      })
   }
 
   getPlace(){
@@ -94,8 +100,17 @@ export class PlacePage implements OnInit {
   }
 
   toggleFavorite(){
-    if(this.faHeart === farHeart) this.faHeart = faHeart;
-    else this.faHeart = farHeart;
+    if(this.faHeart === farHeart) { 
+      this.faHeart = faHeart;
+      this.places.favoritePlace(this.placeId).subscribe(
+        (res) => {
+          console.log(res);
+        }
+      );
+    }  
+    else {
+      this.faHeart = farHeart;
+    }
   }
 
   ngOnInit() {

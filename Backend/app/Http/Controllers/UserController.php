@@ -71,8 +71,8 @@ class UserController extends Controller
         $user->ratings()->attach($request->place_id, ['rating' => $request->rating, 'comment' => $request->comment]);
     }
 
-    public function createFavorite(Request $request, $id) {
-        $user = User::find($id);
+    public function createFavorite(Request $request) {
+        $user = Auth::user();
         $user->favorites()->attach($request->place_id);
     }
 

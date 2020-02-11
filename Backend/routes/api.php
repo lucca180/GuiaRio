@@ -26,7 +26,6 @@ Route::get('ratingsUser/{id}', 'UserController@ratingsUser');
 Route::get('favorites/{id}', 'UserController@favorites');
 Route::post('createUser', 'UserController@createUser');
 Route::post('createRating/{id}', 'UserController@createRating');
-Route::post('createFavorite/{id}', 'UserController@createFavorite');
 Route::put('updateUser/{id}', 'UserController@updateUser');
 Route::delete('deleteUser/{id}', 'UserController@deleteUser');
 
@@ -44,6 +43,7 @@ Route::post('register','API\PassportController@register');
 Route::post('login','API\PassportController@login');
 
 Route::group(['middleware'=>'auth:api'], function() {
+    Route::post('createFavorite', 'UserController@createFavorite');
     Route::post('logout', 'API\PassportController@logout');
     Route::post('getDetails', 'API\PassportController@getDetails');
 });

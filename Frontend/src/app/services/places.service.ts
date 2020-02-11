@@ -10,6 +10,10 @@ import { Observable } from 'rxjs';
 export class PlacesService {
 
   apiURL: string = 'http://localhost:8000/api/';
+
+  httpHeaders: any = {
+    'accept': 'application/json',
+  }
   
   constructor(public http: HttpClient) { }
 
@@ -34,6 +38,9 @@ export class PlacesService {
 
   getPlace(id):Observable<any> {
     return this.http.get(this.apiURL+'showPlace/'+id);
+  }
+  favoritePlace(id):Observable<any> { 
+    return this.http.post(this.apiURL + 'createFavorite/'+id, this.httpHeaders);
   }
 
   

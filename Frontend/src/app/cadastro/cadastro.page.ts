@@ -70,14 +70,6 @@ export class CadastroPage implements OnInit {
         }
     }
 
-    // Função que pega o nome no storage.
-
-    // get() {
-    //     this.storage.get('name');
-    // }
-
-    //Função para registrar o usuário no banco de dados(integração)
-
     registrarUsuario( form ) {
         if ( form.status == "VALID" ) {
             this.authService.registrarUsuario( form.value ).subscribe(

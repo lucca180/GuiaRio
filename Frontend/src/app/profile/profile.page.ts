@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { faChevronLeft, faThumbsUp, faMapMarkerAlt, faInfoCircle, faCommentAlt, faCheck, faHeart} from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { faEdit} from '@fortawesome/free-regular-svg-icons';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup , Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { NavController } from '@ionic/angular';
 import { UsersService } from '../services/users.service';
