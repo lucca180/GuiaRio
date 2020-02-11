@@ -66,6 +66,16 @@ class UserController extends Controller
         return response()->json($user);
     }
 
+    public function createRating(Request $request, $id) {
+        $user = User::find($id);
+        $user->ratings()->attach($request->place_id, ['rating' => $request->rating, 'comment' => $request->comment]);
+    }
+
+    public function createFavorite(Request $request, $id) {
+        $user = User::find($id);
+        $user->favorites()->attach($request->place_id);
+    }
+
     public function listUser() {
         $user = User::all();
         return response()->json($user);
@@ -79,6 +89,24 @@ class UserController extends Controller
     public function showUserPhoto($id) {
         $user = User::findOrFail($id);
         return Storage::download($user->photo);
+    }
+
+    public function ratingsUser($id) {
+        $user = User::find($id);
+        if($user) {
+            return response()->json($user->ratings);
+        } else {
+            return response()->json(['Este usuário não existe']);
+        }
+    }
+
+    public function favorites($id) {
+        $user = User::find($id);
+        if($user) {
+            return response()->json($user->favorites);
+        } else {
+            return response()->json(['Este usuário não existe']);
+        }
     }
 
     public function updateUser(Request $request, $id) {
@@ -150,5 +178,6 @@ class UserController extends Controller
         User::destroy($id);
         return response()->json(['Usuário deletado!']);
     }
+
 
 }
