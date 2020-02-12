@@ -17,7 +17,7 @@
   </ion-header>
   <ion-content>
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-      <ion-fab-button [disabled]="reviewFormActive && reviewForm.invalid" (click)="fabClick(reviewForm)" >
+      <ion-fab-button type="submit" [disabled]="reviewFormActive && reviewForm.invalid" (click)="fabClick(reviewForm)" >
         <fa-icon *ngIf="!reviewFormActive" [icon]="faCommentAlt"></fa-icon>
         <fa-icon *ngIf="reviewFormActive" [icon]="faCheck"></fa-icon>
       </ion-fab-button>
@@ -34,22 +34,22 @@
 
       <div *ngIf="reviewFormActive" class="reviewForm">
         <h1>Escreva sua Avaliação</h1>
-        <form [formGroup]="reviewForm">
+        <form [formGroup]="reviewForm" (ngSubmit)="submitForm(reviewForm)">
           <ion-list>
             <ion-item>
               <ion-label position="stacked">Comentário</ion-label>
               <ion-textarea formControlName="comment"></ion-textarea>
             </ion-item>
             
-            <ion-radio-group>
+            <ion-radio-group formControlName="rating">
               <ion-item>
                 <ion-label>Recomendo esse lugar</ion-label>
-                <ion-radio slot="start" value="true" formControlName="recomended"></ion-radio>
+                <ion-radio slot="start" value="true"></ion-radio>
               </ion-item>
           
               <ion-item>
                 <ion-label>Não Recomendo esse lugar</ion-label>
-                <ion-radio slot="start" value="false" formControlName="recomended"></ion-radio>
+                <ion-radio slot="start" value="false" ></ion-radio>
               </ion-item>
             </ion-radio-group>
           </ion-list>

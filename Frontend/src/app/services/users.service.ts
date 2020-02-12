@@ -28,4 +28,7 @@ export class UsersService {
   updateUser(id, values):Observable<any> {
     return this.http.put(this.apiURL+'updateUser/'+id, values, this.httpHeaders);
   }
+  createComment(form, idUser):Observable<any> {
+    return this.http.post( this.apiURL + 'createRating/'  + idUser, form);
+  }
 }
