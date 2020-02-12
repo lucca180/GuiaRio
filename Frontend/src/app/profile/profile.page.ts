@@ -79,8 +79,9 @@ export class ProfilePage implements OnInit {
       this.userObj = res;
       console.log(res);
       //if(!res.photo) this.userObj.photo = '../../../assets/avatar_placeholder.png';
-      let userId = JSON.parse(localStorage.getItem("userData")).id;
-
+      let user = JSON.parse(localStorage.getItem("userData"));
+      if(!user) return;
+      let userId = user.id;
       if(res.id === userId) this.isOwner = true;
     })
   }

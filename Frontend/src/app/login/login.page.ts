@@ -36,7 +36,7 @@ export class LoginPage implements OnInit {
 
   login( form ) {
       if ( form.status == "VALID" ) {
-          this.authService.logarUsuario( form.value ).subscribe(res => {
+          this.authService.login( form.value ).subscribe(res => {
               console.log( res.message );
               localStorage.setItem( 'userData', JSON.stringify(res.data.user) );
               localStorage.setItem( 'userToken', res.data.token );

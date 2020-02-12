@@ -28,4 +28,16 @@ export class UsersService {
   updateUser(id, values):Observable<any> {
     return this.http.put(this.apiURL+'updateUser/'+id, values, this.httpHeaders);
   }
+
+  getFavotires(id):Observable<any> {
+    return this.http.get(this.apiURL+"favorites/"+id);
+  }
+
+  addFavorite(userId, placeId):Observable<any> {
+    return this.http.post(this.apiURL+"createFavorite/"+userId, {place_id: placeId});
+  }
+
+  removeFavorite(userId, placeId):Observable<any> {
+    return this.http.post(this.apiURL+"deleteFavorite/"+userId, {place_id: placeId});
+  }
 }

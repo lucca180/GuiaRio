@@ -72,7 +72,7 @@ export class CadastroGuiaPage implements OnInit {
 
     registrarUsuario( form ) {
         if ( form.status == "VALID" ) {
-            this.authService.registrarUsuario( form.value ).subscribe(
+            this.authService.register( form.value ).subscribe(
                 ( res ) => {
                     console.log( res );
                     this.router.navigate(['../login']);

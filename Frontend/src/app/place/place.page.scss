@@ -3,6 +3,14 @@ ion-header{
     padding: 15px;
 }
 
+.loading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
 .themeWrapper{
     width: 100%;
     height: 100%;

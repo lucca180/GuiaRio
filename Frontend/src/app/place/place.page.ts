@@ -8,6 +8,7 @@ import { NavController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 
 import { PlacesService } from '../services/places.service';
+import { UsersService } from '../services/users.service';
 
 @Component({
   selector: 'app-place-page',
@@ -29,7 +30,9 @@ export class PlacePage implements OnInit {
   themeName = "defaultTheme";
 
   placeId: string;
-  
+  user: any;
+  loading:boolean = true;
+
   placeObj = {
     name: '',
     address: '',
@@ -41,11 +44,17 @@ export class PlacePage implements OnInit {
   reviewForm: FormGroup;
   reviewFormActive = false;
 
-  constructor(public formbuilder: FormBuilder, public places: PlacesService, private navCtrl: NavController, private route: ActivatedRoute) { 
-    this.reviewForm = this.formbuilder.group({
-      comment: [null, null],
-      recomended: ['', Validators.required],
-    })
+  constructor(
+      public formbuilder: FormBuilder, 
+      public places: PlacesService, 
+      private navCtrl: NavController, 
+      private route: ActivatedRoute,
+      private users: UsersService) { 
+      
+      this.reviewForm = this.formbuilder.group({
+        comment: [null, null],
+        recomended: ['', Validators.required],
+      })
   }
 
   getPlace(){
@@ -69,6 +78,8 @@ export class PlacePage implements OnInit {
           this.themeName = "defaultTheme";
           break;
       }
+
+      if(!this.user) this.loading = false;
     })
   }
 
@@ -94,13 +105,34 @@ export class PlacePage implements OnInit {
   }
 
   toggleFavorite(){
-    if(this.faHeart === farHeart) this.faHeart = faHeart;
-    else this.faHeart = farHeart;
+    if(!this.user) return this.navCtrl.navigateForward("/pre-login");
+    
+    if(this.faHeart === farHeart) { // NÃO FAVORITADO
+      this.faHeart = faHeart;
+      this.users.addFavorite(this.user.id, this.placeId).subscribe(res => console.log(res)); 
+    }
+    
+    else { // FAVORITADO
+      this.faHeart = farHeart;
+      this.users.removeFavorite(this.user.id, this.placeId).subscribe(res => console.log(res));
+    }
+  }
+
+  checkFavorite(){
+    this.users.getFavotires(this.user.id).subscribe(res => {
+      let fav = res.filter(x => x.id == this.placeId);
+      console.log(res, fav);
+      if(fav.length == 1) this.faHeart = faHeart;
+      this.loading = false;
+    })
   }
 
   ngOnInit() {
     this.placeId = this.route.snapshot.paramMap.get('id');
     this.getPlace();
+
+    this.user = JSON.parse(localStorage.getItem("userData"));
+    if(this.user) this.checkFavorite();
   }
 
 }
