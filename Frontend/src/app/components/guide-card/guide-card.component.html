@@ -1,13 +1,13 @@
-<ion-card button>
+<ion-card button (click)="goToProfile()">
   <ion-card-content>
     <div class="avatar">
-      <img src="{{guideInfo.img}}"/>
+      <img src="{{guideObj.photo}}"/>
     </div>
     <div class="content">
       <div class="nameScore">
-        <h1>{{guideInfo.name}}</h1>
+        <h1>{{guideObj.first_name}} {{guideObj.last_name}}</h1>
       </div>
-      <p class="bio">{{guideInfo.bio}}</p>
+      <p class="bio">{{guideObj.description}}</p>
     </div>
     </ion-card-content>
 </ion-card>

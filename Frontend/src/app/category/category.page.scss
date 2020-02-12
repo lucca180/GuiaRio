@@ -1,0 +1,29 @@
+.content{
+    height: 100%;
+}
+
+.defaultTheme ion-toolbar{
+    --background: #3A57E2;
+    --color: #fff;
+}
+
+.natureTheme ion-toolbar{
+    --background: #2C9A62;
+    --color: #fff;
+}
+
+
+.foodTheme ion-toolbar{
+    --background: #D81B60;
+    --color: #fff;
+}
+
+.beachTheme ion-toolbar{
+    --background: #FFA000;
+    --color: #fff;
+}
+
+.cultureTheme ion-toolbar{
+    --background: #AB47BC;
+    --color: #fff;
+}

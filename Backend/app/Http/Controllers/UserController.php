@@ -64,7 +64,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return response()->json([$user]);
+        return response()->json($user);
     }
 
     public function createRating(Request $request, $id) {
@@ -93,7 +93,7 @@ class UserController extends Controller
 
     public function showUser($id) {
         $user = User::findOrFail($id);
-        return response()->json([$user]);
+        return response()->json($user);
     }
 
     public function showUserPhoto($id) {
@@ -165,7 +165,6 @@ class UserController extends Controller
                 if (!Storage::exists('localUserPhotos/')) {
                     Storage::makeDirectory('localUserPhotos/',0775,true);
                 }
-                            
                 $file = $request->file('photo');
                 $filename = $user->id. '.' .$file->getClientOriginalExtension();
                 $path = $file->storeAs('localUserPhotos',$filename);

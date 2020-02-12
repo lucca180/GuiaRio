@@ -1,0 +1,14 @@
+<ion-header class="{{themeName}}">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{categoryName}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="content">
+  <app-place-card *ngFor="let place of placesArr" [placeObj]="place"></app-place-card>
+  <p class="ion-text-center" *ngIf="loading">Carregando....</p>
+  <p class="ion-text-center" *ngIf="placesArr.length == 0 && !loading">Nenhum lugar cadastrado</p>
+</ion-content>

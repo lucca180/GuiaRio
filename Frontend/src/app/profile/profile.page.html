@@ -1,0 +1,46 @@
+<ion-header>
+  <div class="backButton">
+    <ion-button (click)="goBack()" class="backButton"><fa-icon [icon]="faChevronLeft"></fa-icon></ion-button>
+  </div>
+  <div *ngIf="!editMode" class="headerContent">
+    <img *ngIf="userObj.photo" class="avatar" src="{{userObj.photo}}"/>
+    <img *ngIf="!userObj.photo" class="avatar" src="../../../assets/avatar_placeholder.png"/>
+
+    <h1>{{userObj.first_name}} {{userObj.last_name}} <fa-icon *ngIf="isOwner" (click)="toggleEdit()" [icon]="faEdit"></fa-icon></h1>
+    <h2 *ngIf="userObj.is_guide">Guia Verificado</h2>
+    <p>{{userObj.description}}</p>
+    <div *ngIf="userObj.is_guide" class="guideButtons">
+      <ion-button color="light">Ligar</ion-button> <ion-button  color="light">Email</ion-button>
+    </div>
+  </div>
+  <div *ngIf="editMode" class="headerContent editMode">
+    <form [formGroup]="editForm" (ngSubmit)="submitForm(editForm)">
+      <div (click)="file.click()" class="avatar">
+        <input type="file" accept="*/image" #file style="display: none" (change)="changePhoto(file.files)"/>
+        <img *ngIf="userObj.photo" class="avatar" src="{{userObj.photo}}"/>
+        <img *ngIf="!userObj.photo" class="avatar" src="../../../assets/avatar_placeholder.png"/>
+        <p>Clique para Alterar</p>
+      </div>
+      <h1>{{userObj.first_name}} {{userObj.last_name}} <fa-icon *ngIf="isOwner" (click)="toggleEdit()" [icon]="faEdit"></fa-icon></h1>
+      <ion-item>
+        <ion-label color="light" position="floating">Descrição</ion-label>
+        <ion-textarea autoGrow color="light" formControlName="description" value="{{userObj.description}}"></ion-textarea>
+      </ion-item>
+      <div *ngIf="userObj.is_guide" class="lineInput">
+        <ion-item>
+          <ion-label color="light" position="floating">Email</ion-label>
+          <ion-input color="light" value="{{userObj.email}}"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label color="light" position="floating">Telefone</ion-label>
+          <ion-input color="light" formControlName="phone_number" value="{{userObj.phone_number}}"></ion-input>
+        </ion-item>
+      </div>
+      <ion-button expand="full" (click)="updateUser()" color="light">Salvar Alterações</ion-button>
+    </form>
+  </div>
+</ion-header>
+
+<ion-content>
+  etc etc content
+</ion-content>

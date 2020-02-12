@@ -1,14 +1,14 @@
 <ion-content>
-	<header>
+	<header routerLink="/tabs/home" routerDirection="forward">
 		<h1>GuiaRio</h1>
 		<img src="../../assets/logo.svg"/>
 	</header>
 	<div class="mainContent">
 		<div class="buttons">
-			<ion-button color="primary" size="large">Fazer Login</ion-button>
-			<ion-button color="secondary" size="large">Cadastrar</ion-button>
+			<ion-button color="primary" routerLink="/login" routerDirection="forward" size="large">Fazer Login</ion-button>
+			<ion-button color="secondary" routerLink="/cadastro" routerDirection="forward" size="large">Cadastrar</ion-button>
 		</div>
-		<div class="guide ion-activatable">
+		<div routerLink="/cadastro-guia" routerDirection="forward" class="guide ion-activatable">
 			<ion-ripple-effect></ion-ripple-effect>
 			<b>Trabalha como Guia?</b>
 			<p>Clique aqui, cadastre-se e guie turistas na maior plataforma de Turismo Carioca</p>

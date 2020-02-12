@@ -15,6 +15,7 @@ header .title h1{
   font-weight: bold;
   color: #fff;
   margin: 0;
+  text-transform: capitalize;
 }
 
 header .title h2{
@@ -67,12 +68,12 @@ header .title .right{
   --padding-end: 10px;
 }
 
-.catIcons .food{
+.catIcons .parks{
   --color: rgba(255, 255, 255, 0.7);
   --background: #4CAF50;
 }
 
-.catIcons .parks{
+.catIcons .food{
   --color: rgba(255, 255, 255, 0.7);
   --background: #D81B60;
 }

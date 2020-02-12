@@ -1,0 +1,98 @@
+ion-header{
+    display: flex;
+    padding: 20px;
+    background: #3A57E2;
+}
+
+.backButton {
+    width: 35px;
+    height: 35px;
+    border-radius: 10px;
+    --background: #fff;
+    --color: #3A57E2;
+}
+
+.headerContent{
+    flex: 1;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: -35px; //Compensando o backButton para ficar centralizado
+    color: #fff;
+}
+
+.headerContent .avatar{
+    width: 150px;
+    height: 150px;
+    border-radius: 15px;
+}
+
+.headerContent h1{
+    margin: 0;
+    margin-top: 10px;
+    font-weight: 400;
+}
+
+.headerContent fa-icon{
+    font-size: medium;
+    vertical-align: super;
+}
+
+.headerContent h2{
+    font-size: 18px;
+    margin: 0;
+    opacity: 0.75;
+    font-weight: 400;
+}
+
+.headerContent p{
+    font-size: 16px;
+    opacity: 0.60;
+    text-align: center;
+}
+
+.headerContent .guideButtons ion-button{
+    margin: 0 10px;
+}
+
+.editMode .avatar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.editMode .avatar img{
+    position: absolute;
+    z-index: 0;
+    filter: brightness(0.5);
+}
+
+.editMode .avatar p{
+    z-index: 100;
+    color: #ffff;
+    opacity: 1;
+}
+
+.editMode .lineInput{
+    display: flex;
+    margin: 20px 0;
+}
+
+.editMode ion-item{
+    width: 100%;
+    background: transparent;
+    --background: transparent;
+    --color-activated: #fff;
+    --highlight-color-focused: #fff;
+    --color-activated: #fff;
+    margin: 0 5px;
+}
+
+.editMode form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+}

@@ -1,7 +1,8 @@
 <header>
   <div class="title">
     <div class="left">
-      <h1>Bem-Vindo ao Rio</h1>
+      <h1 *ngIf="!user_name">Bem-Vindo ao Rio</h1>
+      <h1 *ngIf="user_name">Bem-Vindo, {{user_name}}</h1>
       <h2>{{weather.description}}, {{weather.temp}}°C</h2>
     </div>
     <div class="right">
@@ -10,25 +11,25 @@
   </div>
   <div class="catIcons">
     <div class="icon">
-      <ion-button class="parks" shape="round">
+      <ion-button routerLink="/category/1" routerDirection="forward" class="parks" shape="round">
         <fa-icon [icon]="faTree"></fa-icon>
       </ion-button>
-      <p>Parques</p>
+      <p>Natureza</p>
     </div>
     <div class="icon">
-      <ion-button class="food" shape="round">
+      <ion-button routerLink="/category/2" routerDirection="forward" class="food" shape="round">
         <fa-icon [icon]="faPizzaSlice"></fa-icon>
       </ion-button>
       <p>Comida</p>
     </div>
     <div class="icon">
-      <ion-button class="beach" shape="round">
+      <ion-button routerLink="/category/3" routerDirection="forward" class="beach" shape="round">
         <fa-icon [icon]="faUmbrellaBeach"></fa-icon>
       </ion-button>
       <p>Praias</p>
     </div>
     <div class="icon">
-      <ion-button class="culture" shape="round">
+      <ion-button routerLink="/category/4" routerDirection="forward" class="culture" shape="round">
         <fa-icon [icon]="faTheaterMasks"></fa-icon>
       </ion-button>
       <p>Cultura</p>
@@ -40,22 +41,20 @@
 <ion-content>
   <div class="sectionTitle">
     <h1>Lugares Recomendados</h1>
-    <h2>Ver Todos</h2>
+    <!-- <h2>Ver Todos</h2> -->
   </div>
 
   <section class="featuredPlaces">
-    <app-place-featured *ngFor="let place of places" [placeObj]="place"></app-place-featured>
+    <app-place-featured *ngFor="let place of placesArr" [placeObj]="place"></app-place-featured>
   </section>
 
   <div class="sectionTitle">
     <h1>Guias Recomendados</h1>
-    <h2>Ver Todos</h2>
+    <!-- <h2>Ver Todos</h2> -->
   </div>
 
   <section class="featuredGuides">
-    <app-guide-card></app-guide-card>
-    <app-guide-card></app-guide-card>
-    <app-guide-card></app-guide-card>
+    <app-guide-card *ngFor="let guide of guidesArr" [guideObj]="guide" ></app-guide-card>
   </section>
 
 </ion-content>
