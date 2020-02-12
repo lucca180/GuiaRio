@@ -1,4 +1,5 @@
-<div class="themeWrapper {{themeName}}">
+<div *ngIf="loading" class="loading"><ion-spinner color="secondary"></ion-spinner></div>
+<div *ngIf="!loading" class="themeWrapper {{themeName}}">
   <ion-header>
     <div class="mainTitle">
       <ion-button (click)="goBack()" class="backButton"><fa-icon [icon]="faChevronLeft"></fa-icon></ion-button>

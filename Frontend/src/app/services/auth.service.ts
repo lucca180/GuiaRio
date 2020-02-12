@@ -11,18 +11,34 @@ export class AuthService {
 
   apiUrl: string = "http://localhost:8000/api/";
 
+  /*
   httpHeaders: any = {
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
+      'Authorization': 'Bearer '
     }
+  }*/
+
+  register( data ): Observable<any> {
+    return this.http.post( this.apiUrl + 'register', data);
+  }
+  
+  login( data ): Observable<any> {
+    return this.http.post( this.apiUrl + 'login', data);
   }
 
-  registrarUsuario( form ): Observable<any> {
-    return this.http.post( this.apiUrl + 'register', form, this.httpHeaders );
-  }
-  logarUsuario( form ): Observable<any> {
-    return this.http.post( this.apiUrl + 'login', form, this.httpHeaders );
+
+  logout(token): Observable<any>{
+    let headers: any = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': 'Bearer ' + token
+      }
+    }
+
+    return this.http.post(this.apiUrl + 'logout', null, headers);
   }
 }
 
