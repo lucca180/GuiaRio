@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { PlacesService } from '../services/places.service';
 
 @Component({
   selector: 'app-category',
@@ -9,10 +10,14 @@ import { ActivatedRoute } from '@angular/router';
 export class CategoryPage implements OnInit {
   themeName: string = "defaultTheme";
   categoryName: string = "Todos os Lugares"
+  catId: any;
 
-  constructor(private route: ActivatedRoute) { 
-    let cat = this.route.snapshot.paramMap.get('id');
-    switch(cat){
+  placesArr = [];
+  loading:boolean = true;
+
+  constructor(public places: PlacesService, private route: ActivatedRoute) { 
+    this.catId = this.route.snapshot.paramMap.get('id');
+    switch(this.catId){
       case '1':
         this.themeName = "natureTheme";
         this.categoryName = "Natureza";
@@ -33,10 +38,17 @@ export class CategoryPage implements OnInit {
         this.themeName = "defaultTheme";
         break;
     }
+  }
 
+  getPlaces(){
+    this.places.listPlaces().subscribe(res => {
+      this.loading = false;
+      this.placesArr = res.filter(x => x.category == this.catId);
+    })
   }
 
   ngOnInit() {
+    this.getPlaces();
   }
 
 }

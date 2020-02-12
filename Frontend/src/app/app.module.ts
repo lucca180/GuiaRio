@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen';
+//import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 //import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -29,7 +29,7 @@ import { IonicStorageModule } from '@ionic/storage';
 
   providers: [
     StatusBar,
-    SplashScreen,
+    //SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
   ],
   bootstrap: [AppComponent]

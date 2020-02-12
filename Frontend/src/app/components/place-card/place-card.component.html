@@ -1,3 +1,10 @@
-<p>
-  place-card works!
-</p>
+<ion-card>
+  <img *ngIf="placeObj.photo" src="{{placeObj.photo}}" />
+  <ion-card-header>
+    <ion-card-subtitle>{{placeObj.address}}</ion-card-subtitle>
+    <ion-card-title>{{placeObj.name}}</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    {{placeObj.description}}
+  </ion-card-content>
+</ion-card>
