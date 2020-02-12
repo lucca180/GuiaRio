@@ -48,7 +48,6 @@ class User extends Authenticatable
         $this->email = $request->email;
         $this->password = $request->password;
         $this->description = $request->description;
-        $this->photo = $request->photo;
 
         /* Usuário também é guia? */
         if ($request->is_guide) {
@@ -78,9 +77,6 @@ class User extends Authenticatable
         }
         if($request->description) {
             $this->description = $request->description;
-        }
-        if($request->photo) {
-            $this->photo = $request->photo;
         }
 
         /* Update atributos de guia */

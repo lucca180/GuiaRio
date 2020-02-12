@@ -189,6 +189,4 @@ class UserController extends Controller
         User::destroy($id);
         return response()->json(['Usuário deletado!']);
     }
-
-
 }

@@ -17,6 +17,7 @@ class UsersTableSeeder extends Seeder
             'last_name' => 'Cortez',
             'email' => 'cortes@mail.com',
             'password' => 'viz9765',
+            'photo' => 'localUserPhotos/1.jpg'
         ]);
 
         App\User::create([
@@ -24,6 +25,7 @@ class UsersTableSeeder extends Seeder
             'last_name' => 'Martin',
             'email' => 'trimar@mail.com',
             'password' => 'trina8294',
+            'photo' => 'localUserPhotos/2.jpg'
         ]);
 
         App\User::create([
@@ -31,6 +33,7 @@ class UsersTableSeeder extends Seeder
             'last_name' => 'Marini',
             'email' => 'marini@mail.com',
             'password' => 'sea2978',
+            'photo' => 'localUserPhotos/3.jpg'
         ]);
 
         App\User::create([
@@ -38,6 +41,7 @@ class UsersTableSeeder extends Seeder
             'last_name' => 'Souza',
             'email' => 'martsouza@mail.com',
             'password' => 'mart29781',
+            'photo' => 'localUserPhotos/4.jpg'
         ]);
 
         App\User::create([
@@ -45,6 +49,7 @@ class UsersTableSeeder extends Seeder
             'last_name' => 'Hikaru',
             'email' => 'ayumi@mail.com',
             'password' => 'ayhikaru675',
+            'photo' => 'localUserPhotos/5.jpg'
         ]);
 
         /*Seeds de guias*/
@@ -57,7 +62,8 @@ class UsersTableSeeder extends Seeder
             'is_guide' => true,
             'cpf' => '902.593.687-33',
             'phone_number' => '(21) 94515-7615',
-            'cadastur' => '17.765.670/0001-00'
+            'cadastur' => '17.765.670/0001-00',
+            'photo' => 'localUserPhotos/6.jpg'
         ]);
 
         App\User::create([
@@ -69,7 +75,8 @@ class UsersTableSeeder extends Seeder
             'is_guide' => true,
             'cpf' => '811.650.587-40',
             'phone_number' => '(21) 95403-4915',
-            'cadastur' => '16.065.570/0021-00'
+            'cadastur' => '16.065.570/0021-00',
+            'photo' => 'localUserPhotos/7.jpg'
         ]);
 
         App\User::create([
@@ -81,7 +88,8 @@ class UsersTableSeeder extends Seeder
             'is_guide' => true,
             'cpf' => '643.094.407-70',
             'phone_number' => '(21) 90056-3392',
-            'cadastur' => '10.705.670/0701-00'
+            'cadastur' => '10.705.670/0701-00',
+            'photo' => 'localUserPhotos/8.jpg'
         ]);
 
         App\User::create([
@@ -93,7 +101,8 @@ class UsersTableSeeder extends Seeder
             'is_guide' => true,
             'cpf' => '918.291.547-45',
             'phone_number' => '(21) 93677-7296',
-            'cadastur' => '14.215.370/2701-00'
+            'cadastur' => '14.215.370/2701-00',
+            'photo' => 'localUserPhotos/9.jpg'
         ]);
 
         App\User::create([
@@ -105,7 +114,8 @@ class UsersTableSeeder extends Seeder
             'is_guide' => true,
             'cpf' => '833.685.607-27',
             'phone_number' => '(21) 94068-9453',
-            'cadastur' => '13.215.370/2601-00'
+            'cadastur' => '13.215.370/2601-00',
+            'photo' => 'localUserPhotos/10.jpg'
         ]);
     }
 }

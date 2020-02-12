@@ -28,7 +28,7 @@ Route::post('createUser', 'UserController@createUser');
 Route::post('createRating/{id}', 'UserController@createRating');
 Route::post('createFavorite/{id}', 'UserController@createFavorite');
 Route::post('deleteFavorite/{id}', 'UserController@deleteFavorite');
-Route::put('updateUser/{id}', 'UserController@updateUser');
+Route::post('updateUser/{id}', 'UserController@updateUser');
 Route::delete('deleteUser/{id}', 'UserController@deleteUser');
 
 /*Rotas dos lugares*/
