@@ -140,7 +140,11 @@ class UserController extends Controller
             ]);
                 
             if($validatorUser->fails()) {
-                return response()->json($validatorUser->errors());
+                return response()->json(array(
+                    'code'      =>  400,
+                    'message'   =>  $validatorUser->errors(),
+                    'request'   =>  $request,
+                ), 400);
             }
             
             /*Validações de guia*/
@@ -154,21 +158,31 @@ class UserController extends Controller
                 ]);
 
                 if($validatorGuide->fails()) {
-                    return response()->json($validatorGuide->errors());
+        
+                    return response()->json(array(
+                        'code'      =>  400,
+                        'message'   =>  $validatorGuide->errors(),
+                        'request'   =>  $request,
+                    ), 400);
                 }
             }
 
             $user->updateUser($request);
 
             if($request->photo) {
-                /* Código do Storage */
-                if (!Storage::exists('localUserPhotos/')) {
-                    Storage::makeDirectory('localUserPhotos/',0775,true);
-                }
+                /* Código do Storage 
+                if (!Storage::exists('public/localUserPhotos/')) {
+                    Storage::makeDirectory('public/localUserPhotos/',0775,true);
+                }*/
+
                 $file = $request->file('photo');
-                $filename = $user->id. '.' .$file->getClientOriginalExtension();
-                $path = $file->storeAs('localUserPhotos',$filename);
-                $user->photo = $path; 
+                $filename = 'user_'. $user->id. '.' .$file->getClientOriginalExtension();
+                //$path = storage_path('public' . $filename);
+
+                $path = $file->storeAs('public',$filename);
+
+                // É feio, mas funciona. 
+                $user->photo = 'http://localhost:8000/storage/'.$filename;
             } 
            
             $user->save();
