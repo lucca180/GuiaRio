@@ -44,7 +44,7 @@ class Place extends Model
     }
 
     public function ratings() {
-        return $this->belongsToMany('App\User', 'ratings')->withPivot('rating', 'comment');
+        return $this->belongsToMany('App\User', 'ratings')->withPivot('rating', 'comment', 'ratingDate');
     }
 
 }

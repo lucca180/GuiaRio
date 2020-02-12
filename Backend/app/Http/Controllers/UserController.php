@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Carbon\Carbon;
 use App\User;
 
 class UserController extends Controller
@@ -67,13 +68,22 @@ class UserController extends Controller
     }
 
     public function createRating(Request $request, $id) {
-        $user = User::find($id);
-        $user->ratings()->attach($request->place_id, ['rating' => $request->rating, 'comment' => $request->comment]);
+        $user = User::findOrFail($id);
+        $user->ratings()->attach($request->place_id, [
+        'rating' => $request->rating, 
+        'comment' => $request->comment, 
+        'ratingDate' => Carbon::now()
+        ]);
     }
 
     public function createFavorite(Request $request, $id) {
-        $user = User::find($id);
+        $user = User::findOrFail($id);
         $user->favorites()->attach($request->place_id);
+    }
+
+    public function deleteFavorite(Request $request, $id) {
+        $user = User::findOrFail($id);
+        $user->favorites()->detach($request->place_id);
     }
 
     public function listUser() {
