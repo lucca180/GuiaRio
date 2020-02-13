@@ -10,7 +10,7 @@
     <h2 *ngIf="userObj.is_guide">Guia Verificado</h2>
     <p>{{userObj.description}}</p>
     <div *ngIf="userObj.is_guide" class="guideButtons">
-      <ion-button color="light">Ligar</ion-button> <ion-button  color="light">Email</ion-button>
+      <ion-button href="tel:{{userObj.phone_number}}" color="light">Ligar</ion-button> <ion-button href="mailto:{{userObj.email}}"  color="light">Email</ion-button>
     </div>
   </div>
   <div *ngIf="editMode" class="headerContent editMode">
@@ -30,33 +30,12 @@
         <ion-label color="light" position="floating">Descrição</ion-label>
         <ion-textarea autoGrow color="light" formControlName="description" value="{{userObj.description}}"></ion-textarea>
       </ion-item>
-      <div *ngIf="userObj.is_guide" class="lineInput">
-        <ion-item>
-          <ion-label color="light" position="floating">Email</ion-label>
-          <ion-input color="light" value="{{userObj.email}}"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label color="light" position="floating">Telefone</ion-label>
-          <ion-input color="light" formControlName="phone_number" value="{{userObj.phone_number}}"></ion-input>
-        </ion-item>
-      </div>
       <ion-button expand="full" (click)="updateUser()" color="light">Salvar Alterações</ion-button>
     </form>
   </div>
 </ion-header>
 
 <ion-content>
-  <ion-segment (ionChange)="segmentChanged($event)" value="true">
-    <ion-segment-button value="true">
-      <ion-label>Favoritos</ion-label>
-    </ion-segment-button>
-    <ion-segment-button value="false">
-      <ion-label>Comentários</ion-label>
-    </ion-segment-button>
-  </ion-segment>
-  <div *ngIf="favSegment">
     <app-place-card *ngFor="let place of userFavorites" [placeObj]="place"></app-place-card>
     <p *ngIf="userFavorites.length == 0" class="ion-text-center">Esse usuário não tem nenhum lugar favorito :(</p>
-  </div>
-  <div *ngIf="!favSegment">Comentários</div>
 </ion-content>

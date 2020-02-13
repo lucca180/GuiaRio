@@ -79,7 +79,7 @@ export class ProfilePage implements OnInit {
   segmentChanged(ev: any) {
     if(ev.detail.value === "false") this.favSegment = false;
     else this.favSegment = true;
-    console.log('Segment changed', ev);
+    //console.log('Segment changed', ev);
   }
 
   getUser(){

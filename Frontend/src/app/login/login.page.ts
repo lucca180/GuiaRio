@@ -44,7 +44,8 @@ export class LoginPage implements OnInit {
           this.authService.login( form.value ).subscribe(res => {
               localStorage.setItem( 'userData', JSON.stringify(res.data.user) );
               localStorage.setItem( 'userToken', res.data.token );
-              this.router.navigate(['../tabs/home'])
+              location.replace("http://localhost:8100/tabs/home");
+              //this.router.navigate(['../tabs/home'])
       }, e => {       
         this.loading = false;
         this.errorMessage = e.error.message;
