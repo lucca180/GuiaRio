@@ -35,6 +35,7 @@ export class PlacesService {
   getPlace(id):Observable<any> {
     return this.http.get(this.apiURL+'showPlace/'+id);
   }
-
-  
+  commentsInPlace(placeId) {
+    return this.http.get(this.apiURL + 'ratingsPlace/ ' + placeId);
+  }
 }

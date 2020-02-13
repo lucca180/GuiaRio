@@ -74,8 +74,6 @@ class UserController extends Controller
             'rating' => $request->rating, 
             'ratingDate' => Carbon::now(),
         ]);
-
-        return response()->json('Deu bom kkkj');
     }
 
     public function createFavorite(Request $request, $id) {

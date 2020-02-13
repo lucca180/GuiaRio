@@ -102,12 +102,10 @@ export class PlacePage implements OnInit {
 
   submitForm(reviewForm) {
     console.log(reviewForm.value);
-    return this.users.createComment(reviewForm.value, this.placeId).subscribe(
-      (res) =>  console.log(res), (error) => console.log(error),
+    this.users.createComment({...reviewForm.value, place_id: this.placeId}, this.user.id).subscribe(
+      (res) => console.log(res)
     );
   }
-
-
 
   toggleFavorite(){
     if(!this.user) return this.navCtrl.navigateForward("/pre-login");
@@ -132,12 +130,21 @@ export class PlacePage implements OnInit {
     })
   }
 
+  getComments(){
+    this.places.commentsInPlace(this.placeId).subscribe(
+      (res) => {
+        console.log(res[0].pivot);
+    });
+  }
+
+
   ngOnInit() {
     this.placeId = this.route.snapshot.paramMap.get('id');
     this.getPlace();
 
     this.user = JSON.parse(localStorage.getItem("userData"));
     if(this.user) this.checkFavorite();
-  }
 
+    this.getComments();
+  }
 }
