@@ -25,6 +25,10 @@ export class UsersService {
   getRatings(id):Observable<any> {
     return this.http.get(this.apiURL+"ratingsUser/"+id);
   }
+  
+  createComment(form, idUser):Observable<any> {
+    return this.http.post( this.apiURL + 'createRating/'  + idUser, form);
+  }
 
   getFavorites(id):Observable<any> {
     return this.http.get(this.apiURL+"favorites/"+id);
@@ -37,4 +41,3 @@ export class UsersService {
   removeFavorite(userId, placeId):Observable<any> {
     return this.http.post(this.apiURL+"deleteFavorite/"+userId, {place_id: placeId});
   }
-}

@@ -70,10 +70,12 @@ class UserController extends Controller
     public function createRating(Request $request, $id) {
         $user = User::findOrFail($id);
         $user->ratings()->attach($request->place_id, [
-        'rating' => $request->rating, 
-        'comment' => $request->comment, 
-        'ratingDate' => Carbon::now()
+            'comment' => $request->comment, 
+            'rating' => $request->rating, 
+            'ratingDate' => Carbon::now(),
         ]);
+
+        return response()->json('Deu bom kkkj');
     }
 
     public function createFavorite(Request $request, $id) {

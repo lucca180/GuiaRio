@@ -6,9 +6,8 @@ import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NavController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
-
+import { UsersService } from  '../services/users.service';
 import { PlacesService } from '../services/places.service';
-import { UsersService } from '../services/users.service';
 
 @Component({
   selector: 'app-place-page',
@@ -45,16 +44,16 @@ export class PlacePage implements OnInit {
   reviewFormActive = false;
 
   constructor(
-      public formbuilder: FormBuilder, 
-      public places: PlacesService, 
-      private navCtrl: NavController, 
-      private route: ActivatedRoute,
-      private users: UsersService) { 
-      
-      this.reviewForm = this.formbuilder.group({
-        comment: [null, null],
-        recomended: ['', Validators.required],
-      })
+    public formbuilder: FormBuilder, 
+    public places: PlacesService, 
+    private navCtrl: NavController, 
+    private route: ActivatedRoute,
+    public users: UsersService,) { 
+
+    this.reviewForm = this.formbuilder.group({
+      comment: [null],
+      rating: ['', Validators.required],
+    })
   }
 
   getPlace(){
@@ -88,9 +87,10 @@ export class PlacePage implements OnInit {
     else this.navCtrl.back();
   }
 
-  fabClick(form){
+  fabClick(reviewForm){
     if(this.reviewFormActive){
-      this.submitForm(form);
+      this.submitForm(reviewForm);
+      
     }
 
     this.toggleForm();
@@ -100,9 +100,14 @@ export class PlacePage implements OnInit {
     this.reviewFormActive = !this.reviewFormActive;
   }
 
-  submitForm(form) {
-    console.log(form);
+  submitForm(reviewForm) {
+    console.log(reviewForm.value);
+    return this.users.createComment(reviewForm.value, this.placeId).subscribe(
+      (res) =>  console.log(res), (error) => console.log(error),
+    );
   }
+
+
 
   toggleFavorite(){
     if(!this.user) return this.navCtrl.navigateForward("/pre-login");
