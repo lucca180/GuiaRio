@@ -33,13 +33,6 @@ class PlacesTableSeeder extends Seeder
         ]);
 
         App\Place::create([
-            'name' => 'Confeitaria Colombo',
-            'description' => 'A Confeitaria Colombo é uma tradicional confeitaria localizada no Centro da cidade do Rio de Janeiro, no Brasil, sendo um dos principais pontos turísticos da Região Central da cidade.',
-            'address' => 'R. Gonçalves Dias, 32 - Centro',
-            'category' => '2',
-        ]);
-
-        App\Place::create([
             'name' => 'Arcos da Lapa',
             'description' => 'Considerada como a obra arquitetônica de maior porte empreendida no Brasil durante o período colonial, é hoje um dos cartões-postais da cidade, símbolo mais representativo do Rio de Janeiro antigo preservado na região boêmia da Lapa.',
             'address' => 'Praça Cardeal Câmara, s/n - Lapa',
@@ -86,6 +79,13 @@ class PlacesTableSeeder extends Seeder
             'description' => 'A Cidade das Artes é um complexo cultural localizado no coração da Barra da Tijuca. Inaugurada em 2013, tem uma das maiores salas de concertos existentes no Brasil.',
             'address' => 'Avenida das Américas, 5300 - Barra da Tijuca',
             'category' => '4',
+        ]);
+
+        App\Place::create([
+            'name' => 'Confeitaria Colombo',
+            'description' => 'A Confeitaria Colombo é uma tradicional confeitaria localizada no Centro da cidade do Rio de Janeiro, no Brasil, sendo um dos principais pontos turísticos da Região Central da cidade.',
+            'address' => 'R. Gonçalves Dias, 32 - Centro',
+            'category' => '2',
         ]);
 
     }

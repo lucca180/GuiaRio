@@ -41,3 +41,4 @@ export class UsersService {
   removeFavorite(userId, placeId):Observable<any> {
     return this.http.post(this.apiURL+"deleteFavorite/"+userId, {place_id: placeId});
   }
+}

@@ -7,7 +7,7 @@
     </div>
     <div class="otherInfos">
       <div class="left">
-        <p class="reviewInfo"><fa-icon [icon]="faThumbsUp"></fa-icon>75% das pessoas recomendam</p>
+        <p class="reviewInfo"><fa-icon [icon]="faThumbsUp"></fa-icon>{{placeScore}}% das pessoas recomendam</p>
         <p><fa-icon [icon]="faMapMarkerAlt"></fa-icon>{{placeObj.address}}</p>
         <p *ngIf="placeObj.site"><fa-icon [icon]="faInfoCircle"></fa-icon>{{placeObj.site}}</p>
       </div>
@@ -27,10 +27,9 @@
     <img class="placeImage" src="http://localhost:8000/storage/place_{{placeObj.id}}.jpg"/>
     <div class="mainContent">
       <div *ngIf="!reviewFormActive" class="reviews">
-        <h1>Avaliações (3)</h1>
-        <app-review-card></app-review-card>
-        <app-review-card></app-review-card>
-        <app-review-card></app-review-card>
+        <h1>Avaliações ({{reviewArr.length}})</h1>
+        <p *ngIf="reviewArr.length == 0" class="ion-text-center">Não há nenhuma avaliação para esse lugar :(</p>
+        <app-review-card *ngFor="let review of reviewArr" [reviewObj]="review"></app-review-card>
       </div>
 
       <div *ngIf="reviewFormActive" class="reviewForm">
@@ -45,12 +44,12 @@
             <ion-radio-group formControlName="rating">
               <ion-item>
                 <ion-label>Recomendo esse lugar</ion-label>
-                <ion-radio slot="start" value="true"></ion-radio>
+                <ion-radio slot="start" value="1"></ion-radio>
               </ion-item>
           
               <ion-item>
                 <ion-label>Não Recomendo esse lugar</ion-label>
-                <ion-radio slot="start" value="false" ></ion-radio>
+                <ion-radio slot="start" value="0" ></ion-radio>
               </ion-item>
             </ion-radio-group>
           </ion-list>

@@ -20,4 +20,8 @@ export class PlacesService {
   getPlace(id):Observable<any> {
     return this.http.get(this.apiURL+'showPlace/'+id);
   }
+
+  getRatings(id):Observable<any> {
+    return this.http.get(this.apiURL+'ratingsPlace/'+id);
+  }
 }

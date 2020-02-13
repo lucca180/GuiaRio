@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { faThumbsUp, } from '@fortawesome/free-solid-svg-icons';
+import { Component, OnInit, Input } from '@angular/core';
+import { faThumbsUp, faThumbsDown} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-review-card',
@@ -7,8 +7,20 @@ import { faThumbsUp, } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./review-card.component.scss'],
 })
 export class ReviewCardComponent implements OnInit {
+  
+  @Input() reviewObj = {
+    first_name: '',
+    last_name: '',
+    photo: '',
+    is_guide: 0,
+    pivot:{
+      comment: '',
+      rating: '',
+    }
+  };
 
   faThumbsUp = faThumbsUp;
+  faThumbsDown = faThumbsDown;
   
   constructor() { }
 

@@ -70,8 +70,8 @@ class UserController extends Controller
     public function createRating(Request $request, $id) {
         $user = User::findOrFail($id);
         $user->ratings()->attach($request->place_id, [
-            'comment' => $request->comment, 
             'rating' => $request->rating, 
+            'comment' => $request->comment, 
             'ratingDate' => Carbon::now(),
         ]);
 
