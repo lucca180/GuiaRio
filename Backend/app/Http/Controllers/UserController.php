@@ -67,7 +67,7 @@ class UserController extends Controller
         $user->ratings()->attach($request->place_id, [
             'rating' => $request->rating, 
             'comment' => $request->comment, 
-            'ratingDate' => Carbon::now(),
+            'ratingDate' => Carbon::now()->timezone('America/Sao_Paulo')->addHour(-1),
         ]);
 
         return response()->json('Comentário feito!');

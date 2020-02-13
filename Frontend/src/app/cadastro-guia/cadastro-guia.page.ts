@@ -32,7 +32,7 @@ export class CadastroGuiaPage implements OnInit {
             passwordConfirm: [null, [Validators.required, Validators.minLength(6)]],
             is_guide: [true],
             cpf: [null, [Validators.required, Validators.maxLength(11), Validators.minLength(11)]],
-            phone_number: [null, [Validators.required, Validators.minLength(12), Validators.maxLength(12)]],
+            phone_number: [null, [Validators.required, Validators.minLength(14), Validators.maxLength(14)]],
             cadastur: [null, [Validators.required, Validators.minLength(14), Validators.maxLength(14)]],
         });
 
