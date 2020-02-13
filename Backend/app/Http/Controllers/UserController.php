@@ -69,7 +69,7 @@ class UserController extends Controller
             'comment' => $request->comment, 
             'ratingDate' => Carbon::now()->timezone('America/Sao_Paulo')->addHour(-1),
         ]);
-
+        
         return response()->json('Comentário feito!');
     }
 

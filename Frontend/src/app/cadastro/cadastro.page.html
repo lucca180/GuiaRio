@@ -27,7 +27,8 @@
                 <ion-input type="password" formControlName="passwordConfirm"></ion-input>
             </ion-item>  
             <!-- Botão responsável por ir para pagina de login apos o cadastro se for valido e também responsável pelo envio do formulário -->
-            <ion-button class="cadastrar" type="submit" expand="full" color="primary" [disabled]="registerForm.invalid">Cadastrar</ion-button>
+            <ion-button *ngIf="!loading" class="cadastrar" type="submit" expand="full" color="primary" [disabled]="registerForm.invalid">Cadastrar</ion-button>
+            <ion-button *ngIf="loading" class="cadastrar" expand="full" color="primary" disabled><ion-spinner></ion-spinner></ion-button>
         </form>
         <div routerLink="/pre-login" routerDirection="forward" class="guide ion-activatable">
 			<ion-ripple-effect></ion-ripple-effect>

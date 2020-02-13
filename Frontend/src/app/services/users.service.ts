@@ -25,9 +25,9 @@ export class UsersService {
   getRatings(id):Observable<any> {
     return this.http.get(this.apiURL+"ratingsUser/"+id);
   }
-  
-  createComment(form, idUser):Observable<any> {
-    return this.http.post( this.apiURL + 'createRating/'  + idUser, form);
+
+  createComment(values, idUser):Observable<any> {
+    return this.http.post( this.apiURL + 'createRating/' + idUser, values);
   }
 
   getFavorites(id):Observable<any> {
