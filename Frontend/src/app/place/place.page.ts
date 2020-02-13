@@ -31,6 +31,7 @@ export class PlacePage implements OnInit {
   placeId: string;
   user: any;
   loading:boolean = true;
+  placeScore = '100';
 
   placeObj = {
     name: '',
@@ -39,6 +40,8 @@ export class PlacePage implements OnInit {
     photo: '',
     category: 1,
   };
+
+  reviewArr = [];
 
   reviewForm: FormGroup;
   reviewFormActive = false;
@@ -50,10 +53,10 @@ export class PlacePage implements OnInit {
     private route: ActivatedRoute,
     public users: UsersService,) { 
 
-    this.reviewForm = this.formbuilder.group({
-      comment: [null],
-      rating: ['', Validators.required],
-    })
+      this.reviewForm = this.formbuilder.group({
+        comment: [null],
+        rating: ['', Validators.required],
+      })
   }
 
   getPlace(){
@@ -88,12 +91,14 @@ export class PlacePage implements OnInit {
   }
 
   fabClick(reviewForm){
+    if(!this.user) return this.navCtrl.navigateForward("/pre-login");
+
     if(this.reviewFormActive){
       this.submitForm(reviewForm);
       
     }
 
-    this.toggleForm();
+    else this.toggleForm();
   }
 
   toggleForm(){
@@ -102,9 +107,33 @@ export class PlacePage implements OnInit {
 
   submitForm(reviewForm) {
     console.log(reviewForm.value);
-    this.users.createComment({...reviewForm.value, place_id: this.placeId}, this.user.id).subscribe(
-      (res) => console.log(res)
-    );
+    
+    this.users.createComment({...reviewForm.value, place_id: this.placeId}, this.user.id).subscribe((res) => {
+        console.log(res)
+        this.getComments();
+        this.toggleForm();
+    });
+  }
+
+  getComments(){
+    this.places.getRatings(this.placeId).subscribe(res=>{
+      console.log(res);
+      this.reviewArr = res;
+      this.countScore();
+    })
+  }
+
+  countScore(){
+    let total = this.reviewArr.length;
+    let positive = 0;
+    
+    if(total == 0) return;
+
+    for(let review of this.reviewArr)
+      if(review.pivot.rating) positive += 1;
+    
+    this.placeScore = ((positive / total) * 100).toFixed(0);
+    
   }
 
   toggleFavorite(){
@@ -122,21 +151,13 @@ export class PlacePage implements OnInit {
   }
 
   checkFavorite(){
-    this.users.getFavotires(this.user.id).subscribe(res => {
+    this.users.getFavorites(this.user.id).subscribe(res => {
       let fav = res.filter(x => x.id == this.placeId);
-      console.log(res, fav);
+      //console.log(res, fav);
       if(fav.length == 1) this.faHeart = faHeart;
       this.loading = false;
     })
   }
-
-  getComments(){
-    this.places.commentsInPlace(this.placeId).subscribe(
-      (res) => {
-        console.log(res[0].pivot);
-    });
-  }
-
 
   ngOnInit() {
     this.placeId = this.route.snapshot.paramMap.get('id');
@@ -147,4 +168,5 @@ export class PlacePage implements OnInit {
 
     this.getComments();
   }
+
 }

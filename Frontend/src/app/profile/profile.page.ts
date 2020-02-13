@@ -22,7 +22,9 @@ export class ProfilePage implements OnInit {
   userId: string;
   isOwner: boolean = false;
   editMode:boolean = false;
-  photoFile: File;
+  favSegment: boolean = true;
+
+  photoFile: File; // -------- Variável para o Arquivo da foto.
 
   userObj:any = {
     first_name: 'Carregando...',
@@ -31,6 +33,8 @@ export class ProfilePage implements OnInit {
     photo: '../../../assets/avatar_placeholder.png',
     is_guide: 0,
   }
+
+  userFavorites = [];
  
   editForm: FormGroup;
 
@@ -43,35 +47,39 @@ export class ProfilePage implements OnInit {
     ){
     
       this.editForm = this.formBuilder.group({
-        // photo: [this.userObj.photo],
         description: [''],
       });
     }
   
   changePhoto(photo){
-    this.photoFile = photo[0];
-    let reader = new FileReader();
+    this.photoFile = photo[0]; // Pega Foto do Input
+    let reader = new FileReader(); // Inicia o Leitor de Arquivos
+    reader.readAsDataURL(photo[0]); // Manda ler o arquivo da foto
     reader.onload = (file: any) => {
-        this.userObj.photo = file.target.result;
+      this.userObj.photo = file.target.result; // Muda ****LOCALMENTE**** a imagem de perfil do Usuário
     }
-    reader.readAsDataURL(photo[0]);
   }
 
   updateUser(){
-    let valuesObj = {
-      ...this.editForm.value,
-    }
+    let formData = new FormData(); // Inicia o objeto especial FormData
+    let description = this.editForm.value.description; // Pega o valor do Formulário do Front
+    
+    if(description) formData.append("description", description); // Coloca no FormData, se existir
+    if(this.photoFile) formData.append("photo", this.photoFile); // Coloca o arquivo da foto no FormData, se existir
 
-    //if(this.photoFile) valuesObj.photo = this.photoFile;
-
-    console.log(this.userId, valuesObj);
-
-    this.users.updateUser(this.userId, valuesObj).subscribe(res=>{
-      console.log(res);
-      //localStorage.setItem('userData', JSON.stringify(res[0])); -------> CORRIGIR PARA CASO O UPDATE RETORNE ERRO
-      this.userObj = res[0];
+    // MANDA PRO BACK
+    this.users.updateUser(this.userId, formData).subscribe(newUser=>{
+      console.log(newUser);
+      localStorage.setItem("userData", JSON.stringify(newUser[0]));
+      this.userObj = newUser[0];
       this.editMode = false;
     })
+  }
+
+  segmentChanged(ev: any) {
+    if(ev.detail.value === "false") this.favSegment = false;
+    else this.favSegment = true;
+    console.log('Segment changed', ev);
   }
 
   getUser(){
@@ -95,6 +103,12 @@ export class ProfilePage implements OnInit {
     this.navCtrl.back();
   }
 
+  getRatings(){
+    this.users.getFavorites(this.userId).subscribe(res=>{
+      this.userFavorites = res;
+    })
+  }
+
   ngOnInit() {
     this.userId = this.route.snapshot.paramMap.get('id');
     
@@ -104,11 +118,12 @@ export class ProfilePage implements OnInit {
       if(!user) return this.router.navigateByUrl("/pre-login");
       this.userObj = user;
       this.userId = user.id;
-      //if(!user.photo) this.userObj.photo = '../../../assets/avatar_placeholder.png';
       this.isOwner = true;
     }
 
     else this.getUser();
+
+    this.getRatings();
   }
 
 }

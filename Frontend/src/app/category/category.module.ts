@@ -8,15 +8,16 @@ import { CategoryPageRoutingModule } from './category-routing.module';
 
 import { CategoryPage } from './category.page';
 
-import { PlaceCardComponent } from '../components/place-card/place-card.component';
+import { ComponentsModule } from '../components.module';
 
 @NgModule({
   imports: [
+    ComponentsModule,
     CommonModule,
     FormsModule,
     IonicModule,
     CategoryPageRoutingModule
   ],
-  declarations: [CategoryPage, PlaceCardComponent]
+  declarations: [CategoryPage]
 })
 export class CategoryPageModule {}

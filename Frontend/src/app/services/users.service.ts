@@ -8,13 +8,6 @@ import { Observable } from 'rxjs';
 export class UsersService {
   apiURL: string = 'http://localhost:8000/api/';
   
-  httpHeaders: any = {
-    headers: {
-      //'Content-Type': 'multipart/form-data',
-      //'Accept': 'application/json',
-    }
-  }
-
   constructor(public http: HttpClient) { }
 
   listUsers():Observable<any> {
@@ -26,14 +19,18 @@ export class UsersService {
   }
 
   updateUser(id, values):Observable<any> {
-    return this.http.put(this.apiURL+'updateUser/'+id, values, this.httpHeaders);
+    return this.http.post(this.apiURL+'updateUser/'+id, values);
+  }
+
+  getRatings(id):Observable<any> {
+    return this.http.get(this.apiURL+"ratingsUser/"+id);
   }
 
   createComment(values, idUser):Observable<any> {
     return this.http.post( this.apiURL + 'createRating/' + idUser, values);
   }
 
-  getFavotires(id):Observable<any> {
+  getFavorites(id):Observable<any> {
     return this.http.get(this.apiURL+"favorites/"+id);
   }
 
