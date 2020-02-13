@@ -32,7 +32,7 @@
             </ion-item>
             <ion-item color="light" class="campos2" [class.invalid]="registerForm.controls.phone_number.touched">
                 <ion-label position="floating">Telefone (Com DDD)</ion-label>
-                <ion-input type="tel" formControlName="phone_number"></ion-input>
+                <ion-input type="number" formControlName="phone_number"></ion-input>
             </ion-item>
             <ion-item color="light" class="campos2" [class.invalid]="registerForm.controls.cadastur.touched">
                 <ion-label position="floating">Cadastur</ion-label>
@@ -40,7 +40,8 @@
             </ion-item>
             <div class="cadastrar" color="primary"> 
                 <!-- Botão responsável por ir para pagina de login apos o cadastro se for valido e também responsável pelo envio do formulário -->
-                <ion-button type="submit" expand="full" [disabled]="registerForm.invalid" color="secondary">cadastrar</ion-button>
+                <ion-button *ngIf="!loading" type="submit" expand="full" [disabled]="registerForm.invalid" color="secondary">cadastrar</ion-button>
+                <ion-button *ngIf="loading" expand="full" disabled color="secondary"><ion-spinner></ion-spinner></ion-button>
             </div>
         </form>
         <div routerLink="/pre-login" routerDirection="forward" class="guide ion-activatable">
