@@ -20,7 +20,8 @@
             </ion-item>
             <!-- div responsável pelo botão de entrar -->
             <div class="entrar">
-                <ion-button type="submit" color="success" expand="full">Entrar</ion-button>
+                <ion-button type="submit" color="success" expand="full" *ngIf="!loading">Entrar</ion-button>
+                <ion-button disabled color="success" expand="full" *ngIf="loading"><ion-spinner></ion-spinner></ion-button>
             </div>
         </form>
 
