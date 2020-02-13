@@ -61,6 +61,7 @@ ion-header{
     justify-content: center;
     align-items: center;
     position: relative;
+    object-fit: cover;
 }
 
 .editMode .avatar img{
@@ -98,5 +99,6 @@ ion-header{
 }
 
 ion-segment{
+    z-index: 1;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
