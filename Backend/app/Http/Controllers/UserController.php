@@ -75,7 +75,7 @@ class UserController extends Controller
             'ratingDate' => Carbon::now(),
         ]);
 
-        return response()->json('Deu bom kkkj');
+        return response()->json('Comentário feito!');
     }
 
     public function createFavorite(Request $request, $id) {
@@ -204,4 +204,9 @@ class UserController extends Controller
         User::destroy($id);
         return response()->json(['Usuário deletado!']);
     }
+
+    public function construct() {
+        $this->middleware('admin');
+    }
+
 }

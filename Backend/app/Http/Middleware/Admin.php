@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Middleware;
+use Auth;
+use App\User;
 
 use Closure;
-use Auth;
 
 class Admin
 {
@@ -16,11 +17,10 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-        /*$user = Auth::user();
-        if($user->is_admin) {
+        if(Auth::user()->is_admin) {
             return $next($request);
         } else {
-            return response()->json(['Erro! Usuário não é administrador!']);
-        }*/
+            return response()->json(['Erro! Usuário não autorizado!']);
+        }
     }
 }
