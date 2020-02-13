@@ -24,7 +24,12 @@ export class TabsPage implements OnInit {
 
 
   ngOnInit(){
-    this.user = JSON.parse(localStorage.getItem('userData'));
-    if(this.user) this.user.token = localStorage.getItem("userToken");
+    try{
+      this.user = JSON.parse(localStorage.getItem('userData'));
+      if(this.user) this.user.token = localStorage.getItem("userToken");
+    }catch(e){
+      localStorage.clear();
+      console.error('UserState Corrompido. Deletando LocalStorage...', e);
+    }
   }
 }

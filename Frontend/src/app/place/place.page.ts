@@ -119,7 +119,7 @@ export class PlacePage implements OnInit {
   }
 
   checkFavorite(){
-    this.users.getFavotires(this.user.id).subscribe(res => {
+    this.users.getFavorites(this.user.id).subscribe(res => {
       let fav = res.filter(x => x.id == this.placeId);
       console.log(res, fav);
       if(fav.length == 1) this.faHeart = faHeart;

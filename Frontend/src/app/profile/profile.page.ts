@@ -22,6 +22,7 @@ export class ProfilePage implements OnInit {
   userId: string;
   isOwner: boolean = false;
   editMode:boolean = false;
+  favSegment: boolean = true;
 
   photoFile: File; // -------- Variável para o Arquivo da foto.
 
@@ -32,6 +33,8 @@ export class ProfilePage implements OnInit {
     photo: '../../../assets/avatar_placeholder.png',
     is_guide: 0,
   }
+
+  userFavorites = [];
  
   editForm: FormGroup;
 
@@ -65,9 +68,18 @@ export class ProfilePage implements OnInit {
     if(this.photoFile) formData.append("photo", this.photoFile); // Coloca o arquivo da foto no FormData, se existir
 
     // MANDA PRO BACK
-    this.users.updateUser(this.userId, formData).subscribe(res=>{
-      console.log(res);
+    this.users.updateUser(this.userId, formData).subscribe(newUser=>{
+      console.log(newUser);
+      localStorage.setItem("userData", JSON.stringify(newUser[0]));
+      this.userObj = newUser[0];
+      this.editMode = false;
     })
+  }
+
+  segmentChanged(ev: any) {
+    if(ev.detail.value === "false") this.favSegment = false;
+    else this.favSegment = true;
+    console.log('Segment changed', ev);
   }
 
   getUser(){
@@ -91,6 +103,12 @@ export class ProfilePage implements OnInit {
     this.navCtrl.back();
   }
 
+  getRatings(){
+    this.users.getFavorites(this.userId).subscribe(res=>{
+      this.userFavorites = res;
+    })
+  }
+
   ngOnInit() {
     this.userId = this.route.snapshot.paramMap.get('id');
     
@@ -100,11 +118,12 @@ export class ProfilePage implements OnInit {
       if(!user) return this.router.navigateByUrl("/pre-login");
       this.userObj = user;
       this.userId = user.id;
-      //if(!user.photo) this.userObj.photo = '../../../assets/avatar_placeholder.png';
       this.isOwner = true;
     }
 
     else this.getUser();
+
+    this.getRatings();
   }
 
 }

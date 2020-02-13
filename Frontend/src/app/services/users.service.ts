@@ -22,7 +22,11 @@ export class UsersService {
     return this.http.post(this.apiURL+'updateUser/'+id, values);
   }
 
-  getFavotires(id):Observable<any> {
+  getRatings(id):Observable<any> {
+    return this.http.get(this.apiURL+"ratingsUser/"+id);
+  }
+
+  getFavorites(id):Observable<any> {
     return this.http.get(this.apiURL+"favorites/"+id);
   }
 

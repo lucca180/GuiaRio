@@ -24,7 +24,7 @@
       </ion-fab-button>
     </ion-fab>
     
-    <img *ngIf="placeObj.photo" class="placeImage" src="{{placeObj.photo}}"/>
+    <img class="placeImage" src="http://localhost:8000/storage/place_{{placeObj.id}}.jpg"/>
     <div class="mainContent">
       <div *ngIf="!reviewFormActive" class="reviews">
         <h1>Avaliações (3)</h1>

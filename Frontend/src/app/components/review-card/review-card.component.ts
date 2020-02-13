@@ -9,7 +9,7 @@ import { faThumbsUp, } from '@fortawesome/free-solid-svg-icons';
 export class ReviewCardComponent implements OnInit {
 
   faThumbsUp = faThumbsUp;
-
+  
   constructor() { }
 
   ngOnInit() {}

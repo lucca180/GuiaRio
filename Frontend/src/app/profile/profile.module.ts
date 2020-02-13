@@ -9,8 +9,11 @@ import { ProfilePageRoutingModule } from './profile-routing.module';
 
 import { ProfilePage } from './profile.page';
 
+import {ComponentsModule} from '../components.module';
+
 @NgModule({
   imports: [
+    ComponentsModule,
     FontAwesomeModule,
     CommonModule,
     ReactiveFormsModule,
