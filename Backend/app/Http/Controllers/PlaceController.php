@@ -31,16 +31,11 @@ class PlaceController extends Controller
         $place->createPlace($request);
 
         if($request->photo) {
-            /* Código do Storage */
-            if (!Storage::exists('localPlacePhotos/')) {
-                Storage::makeDirectory('localPlacePhotos/',0775,true);
-            }
-                        
             $file = $request->file('photo');
-            $filename = $place->id. '.' .$file->getClientOriginalExtension();
-            $path = $file->storeAs('localPlacePhotos',$filename);
-            $place->photo = $path; 
-        }
+            $filename = 'place_'. $user->id. '.' .$file->getClientOriginalExtension();
+            $path = $file->storeAs('public',$filename);
+            $user->photo = 'http://localhost:8000/storage/'.$filename;
+        } 
 
         $place->save();
 
@@ -96,15 +91,10 @@ class PlaceController extends Controller
             $place->updatePlace($request, $id);
 
             if($request->photo) {
-                /* Código do Storage */
-                if (!Storage::exists('localPlacePhotos/')) {
-                    Storage::makeDirectory('localPlacePhotos/',0775,true);
-                }
-                            
                 $file = $request->file('photo');
-                $filename = $place->id. '.' .$file->getClientOriginalExtension();
-                $path = $file->storeAs('localPlacePhotos',$filename);
-                $place->photo = $path; 
+                $filename = 'place_'. $user->id. '.' .$file->getClientOriginalExtension();
+                $path = $file->storeAs('public',$filename);
+                $user->photo = 'http://localhost:8000/storage/'.$filename;
             }
 
             $place->save();

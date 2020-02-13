@@ -51,16 +51,11 @@ class UserController extends Controller
         $user->createUser($request);
 
         if($request->photo) {
-            /* Código do Storage */
-            if (!Storage::exists('localUserPhotos/')) {    
-                Storage::makeDirectory('localUserPhotos/',0775,true);
-            }
-                        
             $file = $request->file('photo');
-            $filename = $user->id. '.' .$file->getClientOriginalExtension();
-            $path = $file->storeAs('localUserPhotos',$filename);
-            $user->photo = $path; 
-        }
+            $filename = 'user_'. $user->id. '.' .$file->getClientOriginalExtension();
+            $path = $file->storeAs('public',$filename);
+            $user->photo = 'http://localhost:8000/storage/'.$filename;
+        } 
 
         $user->save();
 
@@ -172,18 +167,9 @@ class UserController extends Controller
             $user->updateUser($request);
 
             if($request->photo) {
-                /* Código do Storage 
-                if (!Storage::exists('public/localUserPhotos/')) {
-                    Storage::makeDirectory('public/localUserPhotos/',0775,true);
-                }*/
-
                 $file = $request->file('photo');
                 $filename = 'user_'. $user->id. '.' .$file->getClientOriginalExtension();
-                //$path = storage_path('public' . $filename);
-
                 $path = $file->storeAs('public',$filename);
-
-                // É feio, mas funciona. 
                 $user->photo = 'http://localhost:8000/storage/'.$filename;
             } 
            
