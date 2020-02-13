@@ -63,7 +63,6 @@ class PassportController extends Controller
         $newUser->email = $request->email;
         $newUser->password = bcrypt($request->password);
         $newUser->description = $request->description;
-        $newUser->photo = $request->photo;
 
         /* Usuário também é guia? */
         if ($request->is_guide) {
@@ -95,7 +94,7 @@ class PassportController extends Controller
             $token = $user->createToken('GuiaRio')->accessToken;
 
             return response()->json( [
-                'message'=> "login efetuado com sucesso!",
+                'message'=> "Login efetuado com sucesso!",
                 'data' => [
                     'user' => $user,
                     'token' => $token,
@@ -131,5 +130,4 @@ class PassportController extends Controller
         $accessToken->revoke();
         return response()->json(null, 204);
     }
-
 }
