@@ -22,12 +22,22 @@ class PassportController extends Controller
         'first_name' => 'required|alpha',
         'last_name' => 'required|alpha',
         'email' => 'required|email|unique:users,email',
-        'password' => 'required|string',
+        'password' => 'required|string|min:6',
         'passwordConfirm' => 'required|same:password',
         'description' => 'string',
         'is_guide' => 'boolean',
         'is_admin' => 'boolean',
     
+        ],
+        $messages = [
+            'first_name.required' => 'O primeiro nome é obrigatório!',
+            'first_name.alpha' => 'O primeiro nome deve ter apenas letras!',
+            'last_name.required' => 'O sobrenome é obrigatório!',
+            'last_name.alpha' => 'O sobrenome deve ter apenas letras!',
+            'email.email' => 'Este email é inválido!',
+            'email.unique' => 'Este email já está sendo usado!',
+            'passwordConfirm.required' => 'A confirmação de senha é obrigatória!',
+            'passwordConfirm.same' => 'As senhas não são iguais!',
         ]);
         
         if($validatorUser->fails()) {
