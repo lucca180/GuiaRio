@@ -36,7 +36,6 @@ export class HomePage {
 
 
   getPlaces(){
-    this.places.listPlacesWithPhoto();
     this.places.listPlaces().subscribe(res => {
       console.log(res);
       this.placesArr = res;
@@ -92,8 +91,14 @@ export class HomePage {
     }
   }
 
-  ngOnInit() {
-    let user = JSON.parse(localStorage.getItem("userData"));
-    if(user) this.user_name = user.first_name;
+  ionViewWillEnter() {
+    console.log('chamou')
+    try{
+      let user = JSON.parse(localStorage.getItem("userData"));
+      if(user) this.user_name = user.first_name;
+    }catch(e){
+      localStorage.clear();
+      console.error('UserState Corrompido. Deletando LocalStorage...', e);
+    }
   }
 }

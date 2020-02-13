@@ -1,8 +1,8 @@
-<ion-card>
-  <img *ngIf="placeObj.photo" src="{{placeObj.photo}}" />
+<ion-card button routerLink="/place/{{placeObj.id}}" routerDirection="forward">
+  <img src="http://localhost:8000/storage/place_{{placeObj.id}}.jpg" />
   <ion-card-header>
-    <ion-card-subtitle>{{placeObj.address}}</ion-card-subtitle>
     <ion-card-title>{{placeObj.name}}</ion-card-title>
+    <ion-card-subtitle>{{placeObj.address}}</ion-card-subtitle>
   </ion-card-header>
   <ion-card-content>
     {{placeObj.description}}

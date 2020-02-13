@@ -29,7 +29,7 @@ Route::post('createRating/{id}', 'UserController@createRating');
 Route::post('createFavorite/{id}', 'UserController@createFavorite');
 Route::post('deleteFavorite/{id}', 'UserController@deleteFavorite');
 Route::post('updateUser/{id}', 'UserController@updateUser');
-Route::delete('deleteUser/{id}', 'UserController@deleteUser');
+Route::delete('deleteUser/{id}', 'UserController@deleteUser')->middleware('admin');
 
 /*Rotas dos lugares*/
 Route::get('listPlace', 'PlaceController@listPlace');
@@ -38,7 +38,7 @@ Route::get('showPlacePhoto/{id}', 'PlaceController@showPlacePhoto');
 Route::get('ratingsPlace/{id}', 'PlaceController@ratingsPlace');
 Route::post('createPlace', 'PlaceController@createPlace');
 Route::put('updatePlace/{id}', 'PlaceController@updatePlace');
-Route::delete('deletePlace/{id}', 'PlaceController@deletePlace');
+Route::delete('deletePlace/{id}', 'PlaceController@deletePlace')->middleware('admin');
 
 /*Rotas do passport*/
 Route::post('register','API\PassportController@register');
@@ -48,5 +48,3 @@ Route::group(['middleware'=>'auth:api'], function() {
     Route::post('logout', 'API\PassportController@logout');
     Route::post('getDetails', 'API\PassportController@getDetails');
 });
-
-

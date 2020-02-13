@@ -1,24 +1,29 @@
-<ion-card button>
+<ion-card button routerLink="/profile/{{reviewObj.id}}" routerDirection="forward">
   <ion-card-content>
     <div class="content">
       <div class="header">
 
         <div class="avatar">
-          <img src="https://i.imgur.com/v2suX6R.jpg"/>
+          <img *ngIf="reviewObj.photo" src="{{reviewObj.photo}}"/>
+          <img *ngIf="!reviewObj.photo" src="../../../assets/avatar_placeholder.png"/>
         </div>
 
         <div class="nameInfo">
-          <h1>Claudia Miranda</h1>
-          <h2>Guia Verificada</h2>
+          <h1>{{reviewObj.first_name}} {{reviewObj.last_name}}</h1>
+          <h2 *ngIf="reviewObj.is_guide">Guia Verificado</h2>
         </div>
 
-        <div class="review">
+        <div *ngIf="reviewObj.pivot.rating" class="review">
           <fa-icon [icon]="faThumbsUp"></fa-icon>
           Recomenda
         </div>
+        <div *ngIf="!reviewObj.pivot.rating" class="review ion-text-center">
+          <fa-icon [icon]="faThumbsDown"></fa-icon>
+          Não Recomenda
+        </div>
 
       </div>
-      <p class="reviewText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vestibulum efficitur est sed eleifend. Duis orci neque, condimentum eu bibendum.</p>
+      <p class="reviewText">{{reviewObj.pivot.comment}}</p>
     </div>
     </ion-card-content>
 </ion-card>
