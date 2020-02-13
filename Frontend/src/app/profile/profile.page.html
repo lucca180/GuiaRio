@@ -15,12 +15,16 @@
   </div>
   <div *ngIf="editMode" class="headerContent editMode">
     <form [formGroup]="editForm" (ngSubmit)="submitForm(editForm)">
-      <div (click)="file.click()" class="avatar">
-        <input type="file" accept="*/image" #file style="display: none" (change)="changePhoto(file.files)"/>
-        <img *ngIf="userObj.photo" class="avatar" src="{{userObj.photo}}"/>
-        <img *ngIf="!userObj.photo" class="avatar" src="../../../assets/avatar_placeholder.png"/>
+
+      <!-- UPLOAD DE IMAGEM -->
+      <div (click)="file.click()" class="avatar"> <!-- ao clicar abre o input -->
+        <input type="file" accept="*/image" (change)="changePhoto(file.files)" style="display: none" #file/> <!-- INPUT (invisível) QUE PEGA O FILE -->
+        <img *ngIf="userObj.photo" class="avatar" src="{{userObj.photo}}"/> <!-- Foto do Usuário -->
+        <img *ngIf="!userObj.photo" class="avatar" src="../../../assets/avatar_placeholder.png"/> <!-- Placeholder da foto -->
         <p>Clique para Alterar</p>
       </div>
+      <!-- FIM DO UPLOAD -->
+
       <h1>{{userObj.first_name}} {{userObj.last_name}} <fa-icon *ngIf="isOwner" (click)="toggleEdit()" [icon]="faEdit"></fa-icon></h1>
       <ion-item>
         <ion-label color="light" position="floating">Descrição</ion-label>
