@@ -34,7 +34,11 @@
     </form>
   </div>
 </ion-header>
-
+<ion-segment value="Favoritos">
+  <ion-segment-button value="Favoritos">
+    <ion-label>Favoritos</ion-label>
+  </ion-segment-button>
+</ion-segment>
 <ion-content>
     <app-place-card *ngFor="let place of userFavorites" [placeObj]="place"></app-place-card>
     <p *ngIf="userFavorites.length == 0" class="ion-text-center">Esse usuário não tem nenhum lugar favorito :(</p>

@@ -28,8 +28,7 @@ class PassportController extends Controller
         'is_guide' => 'boolean',
         'is_admin' => 'boolean',
     
-        ],
-        );
+        ]);
         
         if($validatorUser->fails()) {
             return response()->json([
