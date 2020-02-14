@@ -55,6 +55,7 @@ export class CadastroPage implements OnInit {
             this.loading = true;
             this.authService.register( form.value ).subscribe(
                 ( res ) => {
+                    this.errorMessage = "";
                     this.router.navigate(['../login']);
                     this.presentToast();
                 },
@@ -70,7 +71,7 @@ export class CadastroPage implements OnInit {
 
     //Função para o toast de confirmação de cadastro ou aviso de erro
     async presentToast() {
-        if (this.errorMessage !== ''){
+        if (this.errorMessage != ""){
             const toast = await this.toast.create({
                 message: "Cadastro invalido revise seus dados!",
                 duration: 2000

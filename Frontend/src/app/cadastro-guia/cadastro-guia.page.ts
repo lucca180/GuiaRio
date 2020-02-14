@@ -79,6 +79,7 @@ export class CadastroGuiaPage implements OnInit {
             this.loading = true;
             this.authService.register( form.value ).subscribe(
                 ( res ) => {
+                    this.errorMessage = "";
                     this.router.navigate(['../login']);
                     this.presentToast();
                 },
