@@ -41,17 +41,6 @@ export class CadastroPage implements OnInit {
     ngOnInit() {
     }
 
-    //Função para o toast quando a confirmação está incorreta.
-    async presentToast() {
-        if (this.errorMessage){
-            const toast = await this.toast.create({
-                message: this.errorMessage,
-                duration: 2000
-            });
-            toast.present();
-        }
-    }
-
     //Função repsonsável pelo envio do formulário e no comentário uma função que envia e pega o nome(nesse caso) no storage.
     //Também está responsável por levar o usuário para o login se o cadastro for válido.
 
@@ -67,13 +56,36 @@ export class CadastroPage implements OnInit {
             this.authService.register( form.value ).subscribe(
                 ( res ) => {
                     this.router.navigate(['../login']);
+                    this.presentToast();
                 },
             e => {       
                 this.loading = false;
                 this.errorMessage = e.error.message;
                 console.error(e);
                 this.presentToast();
-            });
+                }
+            );    
         }
     }
+
+    //Função para o toast de confirmação de cadastro ou aviso de erro
+    async presentToast() {
+        if (this.errorMessage !== ''){
+            const toast = await this.toast.create({
+                message: "Cadastro invalido revise seus dados!",
+                duration: 2000
+            });
+            toast.present();
+            this.loading = false;
+        }
+        else {
+            const toast = await this.toast.create({
+                message: "Cadastro feito com sucesso!",
+                duration: 2000
+            });
+            toast.present();
+            this.loading = false;
+        }
+    }
+
 }
